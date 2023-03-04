@@ -1,0 +1,12 @@
+.slider {
+  width: 100%;
+  max-width: 1024px;
+}
+
+.sliderimgcontainer > h4 {
+  margin-top: 0px;
+}
+.sliderimgcontainer > p {
+  margin-top: -19px;
+  color: gray;
+}
