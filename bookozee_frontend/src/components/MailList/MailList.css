@@ -1,0 +1,45 @@
+.Maillist {
+  width: 100%;
+  margin-top: 50px;
+  background-color: #00224e;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.mailTitel {
+  font-size: 25px;
+  margin-bottom: -1px;
+  text-align: center;
+}
+.mailDesc {
+  font-size: 16px;
+  text-align: center;
+  color: lightgray;
+}
+.mailInputContainer {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 40px;
+}
+.mailInputContainer > input {
+  width: 300px;
+  height: 40px;
+  border-radius: 4px;
+}
+.mailInputContainer > input::placeholder {
+  font-size: 18px;
+  padding-left: 5px;
+}
+
+.mailInputContainer > button {
+  height: 46px;
+  width: 150px;
+  color: white;
+  font-size: 20px;
+  background-color: #0070c2;
+  border: none;
+  border-radius: 4px;
+}

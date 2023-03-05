@@ -1,7 +1,11 @@
+import EasyTrip from "../../components/EasyTrip/EasyTrip";
 import Featured from "../../components/featured/Featured";
+import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
+import MailList from "../../components/MailList/MailList";
 import Navbar from "../../components/Navbar/Navbar";
 import Property from "../../components/propertyTypeSlider/Property";
+import TopProperties from "../../components/topproperties/TopProperties";
 import "./Home.css";
 
 const Home = () => {
@@ -12,6 +16,10 @@ const Home = () => {
       <div className="homeContainer">
         <Property />
         <Featured />
+        <TopProperties />
+        <EasyTrip />
+        <MailList />
+        <Footer />
       </div>
     </div>
   );

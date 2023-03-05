@@ -199,7 +199,12 @@ const Header = ({ type }) => {
                         </button>
                       </div>
                     </div>
-                    <button className="roomDone">Done</button>
+                    <button
+                      className="roomDone"
+                      onClick={() => setopenOptions(false)}
+                    >
+                      Done
+                    </button>
                   </div>
                 )}
               </div>

@@ -20,7 +20,7 @@ export default function Property() {
       <Swiper
         onSwiper={setSwiperRef}
         slidesPerView={3}
-        spaceBetween={30}
+        spaceBetween={-60}
         pagination={{
           type: "fraction",
         }}

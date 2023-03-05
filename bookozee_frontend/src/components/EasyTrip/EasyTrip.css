@@ -1,0 +1,33 @@
+.EasyTripContainer {
+  width: 100%;
+  max-width: 1024px;
+}
+.EasyTripContainer > p {
+  margin-top: -15px;
+  color: gray;
+  margin-bottom: 20px;
+}
+.EasyTripTab {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.EasyTripTab > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+.EasyTripTab > div:hover {
+  background: whitesmoke;
+  border-radius: 30px;
+}
+.EasyTabActive {
+  border: 1px solid RGB(1, 113, 194);
+  border-radius: 30px;
+  color: RGB(1, 113, 194);
+  background: RGB(1, 113, 194, 0.1);
+}

@@ -10,6 +10,7 @@
   margin-top: -19px;
   color: gray;
 }
+
 .swiper-button-next {
   background-image: url(../../Images/right-arrow.png);
   background-repeat: no-repeat;
@@ -20,9 +21,6 @@
   border-radius: 50%;
   margin-top: -40px;
   margin-right: -7px;
-}
-.swiper-button-next::after {
-  display: none;
 }
 
 .swiper-button-prev {
@@ -36,6 +34,37 @@
   margin-top: -40px;
   margin-left: -7px;
 }
+.swiper-button-next::after {
+  display: none;
+}
 .swiper-button-prev::after {
   display: none;
+}
+.toppropertysubHeading {
+  color: gray;
+  margin-top: -15px;
+  margin-bottom: 28px;
+}
+.PropertyRatings {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: -17px;
+}
+.PropertyRatings > div {
+  background-color: #003581;
+  color: white;
+  font-size: 12px;
+  padding: 5px;
+  border-radius: 4px 4px 4px 0px;
+}
+.PropertyRatings > p {
+  font-size: 12px;
+}
+.PropertyRatings > :nth-child(3) {
+  color: gray;
+}
+.Toppropertyimg {
+  width: 300px;
+  height: 240px;
 }

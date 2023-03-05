@@ -1,0 +1,47 @@
+.footer {
+  margin-top: -30px;
+  width: 100%;
+  margin-bottom: 60px;
+}
+.upperFooter > button {
+  border: 1px solid white;
+  color: white;
+  border-radius: 4px;
+  background: transparent;
+  text-align: center;
+  padding: 10px 20px;
+  margin: 20px;
+}
+
+.upperFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #003480;
+}
+
+.lists {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  color: white;
+  text-decoration: underline;
+  border-top: 1px solid white;
+}
+
+.lowerfooter {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 15px;
+}
+.lowerfooter > div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #0187d2;
+  font-size: 14px;
+}
+.lowerfooter > div > span:hover {
+  color: brown;
+}
