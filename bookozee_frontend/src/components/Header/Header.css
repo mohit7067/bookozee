@@ -12,6 +12,7 @@
 }
 .headerContainer.listMode {
   margin: 20px 0px 0px 0px;
+
 }
 .headerList {
   display: flex;
@@ -144,18 +145,4 @@
 .optionCounterButton:hover {
   background: rgb(1, 112, 194, 0.1);
   border: 1px solid white;
-}
-
-.roomDone {
-  width: 100%;
-  height: 34px;
-  background: transparent;
-  border: 1px solid #0170c2;
-  color: #0170c2;
-  cursor: pointer;
-  border-radius: 3px;
-  font-weight: bold;
-}
-.roomDone:hover {
-  background-color: rgb(1, 112, 194, 0.1);
 }
