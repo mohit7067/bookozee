@@ -79,7 +79,7 @@ const Header = ({ type }) => {
           </div>
           <div className="headerListItem ">
             <MdAttractions />
-            <span>Car rentals</span>
+            <span>Attractions</span>
           </div>
           <div className="headerListItem">
             <FaTaxi />

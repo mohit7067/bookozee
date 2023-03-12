@@ -47,6 +47,19 @@ const getAllHotels = async (req, res, next) => {
     next(error);
   }
 };
+const countByCity = async (req, res, next) => {
+  const cities = req.query.cities.split(",");
+  try {
+    const list = await Promise.all(
+      cities.map((city) => {
+        return HotelModel.countDocuments({ city: city });
+      })
+    );
+    res.status(200).send(list);
+  } catch (error) {
+    next(error);
+  }
+};
 
 module.exports = {
   createHotel,
@@ -54,4 +67,5 @@ module.exports = {
   getAllHotels,
   getSingleHotel,
   deleteHotel,
+  countByCity,
 };

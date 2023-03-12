@@ -5,8 +5,9 @@ const {
   deleteHotel,
   getSingleHotel,
   getAllHotels,
+  countByCity,
 } = require("../controllers/hotels");
-const { verifyAdmin, verifyToken } = require("../utils/verifyToken");
+const { verifyAdmin } = require("../utils/verifyToken");
 
 const HotelRouter = express.Router();
 
@@ -17,8 +18,10 @@ HotelRouter.put("/:id", verifyAdmin, updateHotel);
 //Delete
 HotelRouter.delete("/:id", verifyAdmin, deleteHotel);
 //Get
-HotelRouter.get("/:id", verifyToken, getSingleHotel);
+HotelRouter.get("/find/:id", getSingleHotel);
 //Get All
-HotelRouter.get("/", verifyToken, getAllHotels);
+HotelRouter.get("/", getAllHotels);
+HotelRouter.get("/countByCity", countByCity);
+HotelRouter.get("/countByType", getAllHotels);
 
 module.exports = { HotelRouter };

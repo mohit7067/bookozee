@@ -1,5 +1,6 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const cors = require("cors");
 const { connection } = require("./Config/db");
 const { AuthRouter } = require("./routes/auth");
 const { HotelRouter } = require("./routes/hotels");
@@ -10,6 +11,7 @@ require("dotenv").config();
 //middlewares
 app.use(express.json());
 app.use(cookieParser());
+app.use(cors());
 app.get("/", (req, res) => {
   res.send("homepage !");
 });
