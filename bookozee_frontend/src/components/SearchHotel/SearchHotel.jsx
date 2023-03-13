@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
 import "./searchhotel.css";
 
-const SearchHotel = () => {
+const SearchHotel = ({ item }) => {
   return (
     <div className="searchHotel">
       <img
@@ -9,27 +10,29 @@ const SearchHotel = () => {
         className="shImg"
       />
       <div className="shDesc">
-        <h1 className="shTitle">Tower Street Apartments</h1>
-        <span className="shDistance">500m from center</span>
+        <h1 className="shTitle">{item.name}</h1>
+        <span className="shDistance">{item.distance}m from center</span>
         <span className="shTaxiOp">Free airport taxi</span>
         <span className="shSubtitle">Studio with Air conditioning</span>
-        <span className="shFeatures">
-          Entire studio • 1 bathroom • 21m² 1 full bed
-        </span>
+        <span className="shFeatures">{item.description}</span>
         <span className="shCancelOp">Free cancellation</span>
         <span className="shCancelOpSubtitle">
           You can cancel later, so lock in this great price today !
         </span>
       </div>
       <div className="shDetails">
-        <div className="shRatings">
-          <span>Excellent</span>
-          <button>8.9</button>
-        </div>
+        {item.rating > 0 && (
+          <div className="shRatings">
+            <span>{item.rating >= 5 ? "Excellent" : "Good"}</span>
+            <button>{item.rating}</button>
+          </div>
+        )}
         <div className="shDetailsTexts">
-          <span className="shPrice">$123</span>
+          <span className="shPrice">${item.cheapestPrice}</span>
           <span className="shTaxOp">Includes taxes and fees</span>
-          <button className="shCheckButton">See availability</button>
+          <Link to={`/hotel/${item._id}`}>
+            <button className="shCheckButton">See availability</button>
+          </Link>
         </div>
       </div>
     </div>

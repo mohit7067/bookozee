@@ -9,7 +9,11 @@ const Topfeatured = () => {
   return (
     <div className="topfeatured">
       {loading ? (
-        "Loading please wait"
+        <>
+          <div className="topfeaturedItem topfeaturedskeleton"></div>
+          <div className="topfeaturedItem topfeaturedskeleton"></div>
+          <div className="topfeaturedItem topfeaturedskeleton"></div>
+        </>
       ) : (
         <>
           <div className="topfeaturedItem">
@@ -19,7 +23,7 @@ const Topfeatured = () => {
               className="topfeaturedImg"
             />
             <div className="topfeaturedTitles">
-              <h1>Pune</h1>
+              <h1>Pune </h1>
               <h2>{data[0]} properties</h2>
             </div>
           </div>
@@ -31,7 +35,7 @@ const Topfeatured = () => {
               className="topfeaturedImg"
             />
             <div className="topfeaturedTitles">
-              <h1>Mumbai</h1>
+              <h1>Mumbai </h1>
               <h2>
                 {data[1]} {data[1] > 1 ? "properties" : "property"}
               </h2>
@@ -44,7 +48,7 @@ const Topfeatured = () => {
               className="topfeaturedImg"
             />
             <div className="topfeaturedTitles">
-              <h1>Banglore</h1>
+              <h1>Bangalore</h1>
               <h2>
                 {data[2]} {data[2] > 1 ? "properties" : "property"}
               </h2>

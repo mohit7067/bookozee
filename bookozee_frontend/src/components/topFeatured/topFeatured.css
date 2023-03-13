@@ -15,6 +15,9 @@
   height: 250px;
   flex: 1;
 }
+.topfeaturedskeleton {
+  background-color: #f0f3f3;
+}
 
 .topfeaturedImg {
   width: 100%;

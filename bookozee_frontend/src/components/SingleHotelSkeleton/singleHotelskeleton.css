@@ -1,0 +1,73 @@
+.shsContainer {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.shsname {
+  width: 200px;
+  height: 30px;
+  background-color: #f0f3f3;
+  border-radius: 5px;
+}
+.shsaddress {
+  width: 200px;
+  height: 15px;
+  background-color: #f0f3f3;
+  border-radius: 5px;
+}
+.shsdistance {
+  width: 500px;
+  height: 15px;
+  background-color: #f0f3f3;
+  border-radius: 5px;
+}
+.shsprice {
+  width: 700px;
+  height: 17px;
+  background-color: #f0f3f3;
+  border-radius: 5px;
+}
+
+.shsImageCotainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 230px);
+  gap: 10px;
+}
+.shsImageCotainer > div {
+  background-color: #f0f3f3;
+  border-radius: 5px;
+}
+
+.shsFooterContainer {
+  height: 260px;
+  display: flex;
+  gap: 20px;
+}
+.shsleftContent {
+  flex: 3;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.shsleftFheading {
+  height: 30px;
+  background-color: #f0f3f3;
+  width: 50%;
+}
+.shsleftFsubheading {
+  height: 250px;
+  background-color: #f0f3f3;
+  border-radius: 5px;
+}
+.shsrightContent {
+  flex: 1.2;
+  background-color: #f0f3f3;
+  border-radius: 5px;
+}

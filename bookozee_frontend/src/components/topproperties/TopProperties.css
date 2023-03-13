@@ -3,12 +3,34 @@
   max-width: 1024px;
 }
 
-.sliderimgcontainer > h4 {
-  margin-top: 0px;
+.sliderskeletonimgcontainer {
+  background-color: #f0f3f3;
+  width: 300px;
+  height: 240px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
-.sliderimgcontainer > p {
-  margin-top: -19px;
+.sliderskeletontextcontainer {
+  background-color: #f0f3f3;
+  border-radius: 5px;
+  width: 300px;
+  height: 75px;
+}
+.tpsliderimgcontainer {
+  width: 300px;
+}
+.tpsliderimgcontainer > h4 {
+  margin-top: 0px;
+  text-transform: capitalize;
+}
+.tppricecityCotainer {
+  margin-top: -37px;
+  display: flex;
   color: gray;
+  justify-content: space-between;
+}
+.tpCity {
+  text-transform: capitalize;
 }
 
 .swiper-button-next {
@@ -45,26 +67,26 @@
   margin-top: -15px;
   margin-bottom: 28px;
 }
-.PropertyRatings {
+.tpPropertyRatings {
   display: flex;
   align-items: center;
   gap: 5px;
   margin-top: -17px;
 }
-.PropertyRatings > div {
+.tpPropertyRatings > div {
   background-color: #003581;
   color: white;
   font-size: 12px;
   padding: 5px;
   border-radius: 4px 4px 4px 0px;
 }
-.PropertyRatings > p {
+.tpPropertyRatings > p {
   font-size: 12px;
 }
-.PropertyRatings > :nth-child(3) {
+.tpPropertyRatings > :nth-child(3) {
   color: gray;
 }
-.Toppropertyimg {
+.tpToppropertyimg {
   width: 300px;
   height: 240px;
 }

@@ -6,13 +6,24 @@ import { useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchHotel from "../../components/SearchHotel/SearchHotel";
+import useFetch from "../../hooks/useFetch";
+import HotelSkeleton from "../../components/HotelSkeleton/HotelSkeleton";
 
 const List = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
   const [date, setDate] = useState(location.state.date);
   const [opendate, setOpenDate] = useState(false);
-  const [options, setOptons] = useState(location.state.options);
+  const [options, setOptions] = useState(location.state.options);
+  const [min, setMin] = useState(undefined);
+  const [max, setMax] = useState(undefined);
+  const { data, loading, error, reFetch } = useFetch(
+    `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+  );
+  const HandleClick = () => {
+    reFetch();
+  };
+  console.log(data);
   return (
     <div>
       <Navbar />
@@ -54,6 +65,7 @@ const List = () => {
                     min={0}
                     className="lsOptionInput"
                     placeholder="0"
+                    onChange={(e) => setMin(e.target.value)}
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -65,6 +77,7 @@ const List = () => {
                     className="lsOptionInput"
                     min={0}
                     placeholder="0"
+                    onChange={(e) => setMax(e.target.value)}
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -96,17 +109,21 @@ const List = () => {
                 </div>
               </div>
             </div>
-            <button>Search</button>
+            <button onClick={HandleClick}>Search</button>
           </div>
           <div className="listResult">
-            <SearchHotel />
-            <SearchHotel />
-            <SearchHotel />
-            <SearchHotel />
-            <SearchHotel />
-            <SearchHotel />
-            <SearchHotel />
-            <SearchHotel />
+            {loading ? (
+              <>
+                <HotelSkeleton />
+                <HotelSkeleton />
+              </>
+            ) : (
+              <>
+                {data?.map((item) => {
+                  return <SearchHotel item={item} key={item._id} />;
+                })}
+              </>
+            )}
           </div>
         </div>
       </div>

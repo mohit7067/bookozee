@@ -28,6 +28,7 @@
   width: 300px;
   height: 40px;
   border-radius: 4px;
+  font-size: 20px;
 }
 .mailInputContainer > input::placeholder {
   font-size: 18px;
