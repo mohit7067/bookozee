@@ -4,13 +4,18 @@ import "./searchhotel.css";
 const SearchHotel = ({ item }) => {
   return (
     <div className="searchHotel">
-      <img
-        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDdFGmysLvAeuDkI1OVL703pIHV-xKzlhBCg&usqp=CAU"
-        alt=""
-        className="shImg"
-      />
+      <div className="shContainer">
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDdFGmysLvAeuDkI1OVL703pIHV-xKzlhBCg&usqp=CAU"
+          alt=""
+          className="shImg"
+        />
+      </div>
       <div className="shDesc">
         <h1 className="shTitle">{item.name}</h1>
+        <span className="shCity">
+          {item.city}, {item.address}
+        </span>
         <span className="shDistance">{item.distance}m from center</span>
         <span className="shTaxiOp">Free airport taxi</span>
         <span className="shSubtitle">Studio with Air conditioning</span>

@@ -12,7 +12,7 @@ import HotelSkeleton from "../../components/HotelSkeleton/HotelSkeleton";
 const List = () => {
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
-  const [date, setDate] = useState(location.state.date);
+  const [dates, setDates] = useState(location.state.dates);
   const [opendate, setOpenDate] = useState(false);
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
@@ -23,7 +23,6 @@ const List = () => {
   const HandleClick = () => {
     reFetch();
   };
-  console.log(data);
   return (
     <div>
       <Navbar />
@@ -34,21 +33,25 @@ const List = () => {
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input type="text" placeholder={destination} />
+              <input
+                type="text"
+                placeholder={destination}
+                onChange={(e) => setDestination(e.target.value)}
+              />
             </div>
             <div className="lsItem">
               <label>Check-in-Date to Check-out-Date</label>
               <span onClick={() => setOpenDate(!opendate)}>
                 {" "}
-                {`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(
-                  date[0].endDate,
+                {`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(
+                  dates[0].endDate,
                   "dd/MM/yyyy"
                 )}`}
               </span>
               {opendate && (
                 <DateRange
-                  onChange={(item) => setDate([item.selection])}
-                  ranges={date}
+                  onChange={(item) => setDates([item.selection])}
+                  ranges={dates}
                   minDate={new Date()}
                 />
               )}
@@ -113,10 +116,7 @@ const List = () => {
           </div>
           <div className="listResult">
             {loading ? (
-              <>
-                <HotelSkeleton />
-                <HotelSkeleton />
-              </>
+              <div style={{ textAlign: "center" }}>loading...</div>
             ) : (
               <>
                 {data?.map((item) => {

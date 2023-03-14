@@ -1,4 +1,5 @@
 import "./Header.css";
+import "react-toastify/dist/ReactToastify.css";
 import { MdHotel } from "react-icons/md";
 import { MdFlight } from "react-icons/md";
 import { MdWorkHistory } from "react-icons/md";
@@ -8,15 +9,18 @@ import { FaTaxi } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import { DateRange } from "react-date-range";
-import { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
+import { SearchContext } from "../../context/SearchContext";
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
   const [destination, setDestination] = useState("");
-  const [date, setDate] = useState([
+  const { dispatch } = useContext(SearchContext);
+  const [dates, setDates] = useState([
     {
       startDate: new Date(),
       endDate: new Date(),
@@ -51,7 +55,49 @@ const Header = ({ type }) => {
 
   const navigate = useNavigate();
   const HandleSearch = () => {
-    navigate("/hotels", { state: { destination, date, options } });
+    if (
+      destination.length === 0 &&
+      dates[0].startDate.getDate() === dates[0].endDate.getDate()
+    ) {
+      toast.warn("Please enter city and select dates !", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else if (destination.length === 0) {
+      toast.warn("Please enter city !", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else if (dates[0].startDate.getDate() === dates[0].endDate.getDate()) {
+      toast.warn("Please select dates !", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } else {
+      dispatch({
+        type: "NEW_SEARCH",
+        payload: { destination, dates, options },
+      });
+      navigate("/hotels", { state: { destination, dates, options } });
+    }
   };
   return (
     <div className="header">
@@ -109,17 +155,17 @@ const Header = ({ type }) => {
               <div className="headerSearchItem">
                 <FaCalendarAlt className="headerIcon" />
                 <span onClick={handleopen} className="headerSearchText">
-                  {`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(
-                    date[0].endDate,
+                  {`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(
+                    dates[0].endDate,
                     "dd/MM/yyyy"
                   )}`}
                 </span>
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
-                    onChange={(item) => setDate([item.selection])}
+                    onChange={(item) => setDates([item.selection])}
                     moveRangeOnFirstSelection={false}
-                    ranges={date}
+                    ranges={dates}
                     className="date"
                     minDate={new Date()}
                   />
@@ -220,6 +266,7 @@ const Header = ({ type }) => {
           </>
         )}
       </div>
+      <ToastContainer />
     </div>
   );
 };
