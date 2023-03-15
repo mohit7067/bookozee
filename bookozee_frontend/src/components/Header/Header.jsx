@@ -96,6 +96,19 @@ const Header = ({ type }) => {
         type: "NEW_SEARCH",
         payload: { destination, dates, options },
       });
+      const Milliseconds_per_day = 1000 * 60 * 60 * 24;
+
+      function dayDifference(date1, date2) {
+        const timeDiff = Math.abs(date2.getTime() - date1.getTime());
+        const diffDays = Math.ceil(timeDiff / Milliseconds_per_day);
+
+        return diffDays;
+      }
+
+      const days = dayDifference(dates[0].endDate, dates[0].startDate);
+
+      localStorage.setItem("days", JSON.stringify(days));
+      localStorage.setItem("options", JSON.stringify(options));
       navigate("/hotels", { state: { destination, dates, options } });
     }
   };

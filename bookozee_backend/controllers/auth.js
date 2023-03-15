@@ -42,7 +42,7 @@ const Login = async (req, response, next) => {
           .status(200)
           .json(otherDetails);
       } else {
-        response.status(400).send("Wrong username or password !");
+        next(createError(403, "Wrong username or password !"));
       }
     });
   } catch (error) {

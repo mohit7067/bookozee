@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
@@ -11,7 +11,6 @@ import Header from "../../components/Header/Header";
 import MailList from "../../components/MailList/MailList";
 import Navbar from "../../components/Navbar/Navbar";
 import SingleHotelSkeleton from "../../components/SingleHotelSkeleton/SingleHotelSkeleton";
-import { SearchContext } from "../../context/SearchContext";
 import useFetch from "../../hooks/useFetch";
 import "./hotel.css";
 
@@ -19,7 +18,7 @@ const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
   const { id } = useParams();
-  const { dates, options } = useContext(SearchContext);
+  // const { dates, options } = useContext(SearchContext);
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
 
   const photos = [
@@ -49,16 +48,8 @@ const Hotel = () => {
     },
   ];
 
-  const Milliseconds_per_day = 1000 * 60 * 60 * 24;
-
-  function dayDifference(date1, date2) {
-    const timeDiff = Math.abs(date2.getTime() - date1.getTime());
-    const diffDays = Math.ceil(timeDiff / Milliseconds_per_day);
-
-    return diffDays;
-  }
-
-  const days = dayDifference(dates[0]?.endDate, dates[0]?.startDate);
+  const days = JSON.parse(localStorage.getItem("days"));
+  const options = JSON.parse(localStorage.getItem("options"));
 
   const HandleOpen = (i) => {
     setSlideNumber(i);
