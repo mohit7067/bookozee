@@ -1,0 +1,94 @@
+.reserve {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.418);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rContainer {
+  height: 80%;
+  width: 40%;
+  background-color: white;
+  padding: 20px;
+  position: relative;
+  overflow-y: scroll;
+}
+
+.rClose {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  padding: 2px;
+}
+
+.rItem {
+  display: flex;
+  gap: 50px;
+  height: 150px;
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  overflow-y: scroll;
+}
+.rItemInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.rRoomContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.room {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.rSelect {
+  background: lightgreen;
+  color: white;
+  cursor: pointer;
+}
+.rDrop {
+  background-color: rgba(252, 5, 5, 0.911);
+  color: white;
+  cursor: pointer;
+}
+
+.rTitle {
+  font-weight: 500;
+}
+.rDesc {
+  font-size: 300;
+}
+.rMax {
+  font-size: 12px;
+}
+
+.rPrice {
+  font-weight: 500;
+}
+.rButton {
+  border: none;
+  padding: 10px 20px;
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.noAvailable {
+  text-decoration: line-through;
+}

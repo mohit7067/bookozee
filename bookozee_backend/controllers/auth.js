@@ -15,11 +15,12 @@ const Register = async (req, res, next) => {
           password: hash,
         });
         await newUser.save();
-        res.status(201).send("user has been registered");
+        const { password, ...userDetails } = newUser._doc;
+        res.status(201).send(userDetails);
       });
     });
   } catch (error) {
-    next(error);
+    next(createError(404, "username or email is already exists !"));
   }
 };
 const Login = async (req, response, next) => {

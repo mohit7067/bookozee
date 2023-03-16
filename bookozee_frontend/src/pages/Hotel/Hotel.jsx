@@ -1,24 +1,28 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
 } from "react-icons/bs";
 import { MdLocationPin } from "react-icons/md";
 import { RxCrossCircled } from "react-icons/rx";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
 import MailList from "../../components/MailList/MailList";
 import Navbar from "../../components/Navbar/Navbar";
+import Reserve from "../../components/reserve/Reserve";
 import SingleHotelSkeleton from "../../components/SingleHotelSkeleton/SingleHotelSkeleton";
+import { AuthContext } from "../../context/AuthContext";
 import useFetch from "../../hooks/useFetch";
 import "./hotel.css";
 
 const Hotel = () => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [open, setOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
   const { id } = useParams();
-  // const { dates, options } = useContext(SearchContext);
+  const { user } = useContext(AuthContext);
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
 
   const photos = [
@@ -56,6 +60,14 @@ const Hotel = () => {
     setOpen(true);
   };
 
+  const HandleClick = () => {
+    if (user) {
+      setOpenModal(true);
+    } else {
+      navigate("/login");
+    }
+  };
+
   const handleMove = (direction) => {
     let newslideNumber;
 
@@ -73,6 +85,8 @@ const Hotel = () => {
           <Navbar />
           <Header type="list" />
           <SingleHotelSkeleton />
+          <MailList />
+          <Footer />
         </>
       ) : (
         <div>
@@ -103,7 +117,9 @@ const Hotel = () => {
           <Header type="list" />
           <div className="hotelContainer">
             <div className="hotelWrapper">
-              <button className="booknow">Reserve or Book now !</button>
+              <button className="booknow" onClick={HandleClick}>
+                Reserve or Book now !
+              </button>
               <h1 className="hotelTitle">{data?.name}</h1>
               <div className="hotelAddress">
                 <MdLocationPin />
@@ -145,7 +161,7 @@ const Hotel = () => {
                     <b>${days * data?.cheapestPrice * options.room}</b> ({days}{" "}
                     nights)
                   </h2>
-                  <button>Reserve or Book Now!</button>
+                  <button onClick={HandleClick}>Reserve or Book Now!</button>
                 </div>
               </div>
             </div>
@@ -154,6 +170,7 @@ const Hotel = () => {
           </div>
         </div>
       )}
+      {openModal && <Reserve setOpenModal={setOpenModal} hotelId={id} />}
     </>
   );
 };

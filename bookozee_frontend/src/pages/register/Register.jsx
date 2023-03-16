@@ -3,15 +3,16 @@ import { useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import "./login.css";
+import "./register.css";
 
-const Login = () => {
+const Register = () => {
+  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [credentials, setCredentials] = useState({
     email: undefined,
     password: undefined,
   });
-  const navigate = useNavigate();
+
   const { loading, error, dispatch } = useContext(AuthContext);
 
   const HandleChange = (e) => {
@@ -23,22 +24,34 @@ const Login = () => {
 
   const HandleLogin = async (e) => {
     e.preventDefault();
-    dispatch({ type: "LOGIN_START" });
+    dispatch({ type: "REGISTER_START" });
     try {
-      const res = await axios.post("/auth/login", credentials);
-      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
-      if (res) {
-        navigate("/");
-      }
+      const res = await axios.post("/auth/register", credentials);
+      dispatch({ type: "REGISTER_SUCCESS", payload: res.data });
+      //   if (res) {
+      //     navigate("/", { replace: true });
+      //   }
     } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      console.log(err);
+      dispatch({
+        type: "REGISTER_FAILURE",
+        payload: " Username or Email already exists please login !",
+      });
     }
   };
 
   return (
-    <div className="loginContainer">
-      <form className="loginForm" onSubmit={HandleLogin}>
-        <h1>Bookozee.com (Log In)</h1>
+    <div className="registerContainer">
+      <form className="registerForm" onSubmit={HandleLogin}>
+        <h1>Bookozee.com (Sign Up)</h1>
+        <input
+          type="text"
+          required
+          placeholder="username"
+          onChange={HandleChange}
+          className="email"
+          id="username"
+        />
         <input
           type="email"
           required
@@ -47,10 +60,9 @@ const Login = () => {
           className="email"
           id="email"
         />
-        <div className="loginPassCont">
+        <div className="registerPassCont">
           <input
             type={show ? "text" : "password"}
-            className="password"
             onChange={HandleChange}
             placeholder="password"
             id="password"
@@ -58,9 +70,9 @@ const Login = () => {
           />
           <div onClick={() => setShow(!show)}>
             {show ? (
-              <AiFillEye className="loginEyeicon" />
+              <AiFillEye className="registerEyeicon" />
             ) : (
-              <AiFillEyeInvisible className="loginEyeicon" />
+              <AiFillEyeInvisible className="registerEyeicon" />
             )}
           </div>
         </div>
@@ -68,16 +80,16 @@ const Login = () => {
           <span
             style={{ color: "red", textAlign: "right", marginTop: "-10px" }}
           >
-            {error.message}
+            {error}
           </span>
         )}
-        <button className="loginBtn">
-          {loading ? <div class="lds-dual-ring"></div> : "Login"}
+        <button className="registerBtn">
+          {loading ? <div class="lds-dual-ring"></div> : "Signup"}
         </button>
         <p>
-          New to Bookozee please{" "}
-          <Link style={{ color: "inherit" }} to="/register">
-            Signup
+          Already have an account !{" "}
+          <Link style={{ color: "inherit" }} to="/login">
+            Login
           </Link>
         </p>
       </form>
@@ -85,4 +97,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

@@ -1,3 +1,5 @@
+const { RoomModel } = require("../models/rooms");
+
 const { HotelModel } = require("../models/hotels");
 
 const createHotel = async (req, res, next) => {
@@ -113,6 +115,21 @@ const countByType = async (req, res, next) => {
   }
 };
 
+const getHotelRooms = async (req, res, next) => {
+  try {
+    const hotel = await HotelModel.findById(req.params.id);
+    const list = await Promise.all(
+      hotel.rooms.map((room) => {
+        return RoomModel.findById(room);
+      })
+    );
+
+    res.status(200).json(list);
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   createHotel,
   updateHotel,
@@ -121,4 +138,5 @@ module.exports = {
   deleteHotel,
   countByCity,
   countByType,
+  getHotelRooms,
 };

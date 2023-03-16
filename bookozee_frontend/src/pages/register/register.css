@@ -1,4 +1,4 @@
-.loginContainer {
+.registerContainer {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -6,18 +6,19 @@
   align-items: center;
   padding-top: 160px;
 }
-.loginPassCont {
+.registerPassCont {
   width: 100%;
   position: relative;
+  height: 37px;
 }
-.loginPassCont > input {
+.registerPassCont > input {
   width: 100%;
   height: 37px;
   border-radius: 5px;
   border: none;
   caret-color: #feba02;
 }
-.loginEyeicon {
+.registerEyeicon {
   color: black;
   position: absolute;
   right: 0;
@@ -25,7 +26,7 @@
   top: 12px;
   cursor: pointer;
 }
-.loginForm {
+.registerForm {
   width: 20%;
   border: 5px solid gray;
   border-radius: 10px;
@@ -38,25 +39,25 @@
   color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.loginForm > input {
+.registerForm > input {
   width: 100%;
   height: 37px;
   border-radius: 5px;
   border: none;
   caret-color: #feba02;
 }
-.loginForm > h1 {
+.registerForm > h1 {
   font-weight: bold;
-  font-size: 25px;
+  font-size: 23px;
 }
 
-.loginForm > p {
+.registerForm > p {
   font-size: 12px;
   margin: 0;
   margin-top: -8px;
   text-align: right;
 }
-.loginForm > button {
+.registerForm > button {
   width: 100%;
   height: 37px;
   border-radius: 5px;
@@ -66,7 +67,7 @@
   background-color: #feba02;
   cursor: pointer;
 }
-.loginForm > input::placeholder {
+.registerForm > input::placeholder {
   font-size: 15px;
 }
 

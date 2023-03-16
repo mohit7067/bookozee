@@ -109,6 +109,26 @@ const Header = ({ type }) => {
 
       localStorage.setItem("days", JSON.stringify(days));
       localStorage.setItem("options", JSON.stringify(options));
+      const getDatesInRange = (startDate, endDate) => {
+        const start = new Date(startDate);
+        const end = new Date(endDate);
+
+        const date = new Date(start.getTime());
+
+        const dates = [];
+
+        while (date <= end) {
+          dates.push(new Date(date).getTime());
+          date.setDate(date.getDate() + 1);
+        }
+
+        return dates;
+      };
+
+      const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate);
+
+      localStorage.setItem("alldates", JSON.stringify(alldates));
+
       navigate("/hotels", { state: { destination, dates, options } });
     }
   };
