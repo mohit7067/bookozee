@@ -1,5 +1,4 @@
 .footer {
-  margin-top: -30px;
   width: 100%;
   margin-bottom: 60px;
 }
@@ -44,4 +43,23 @@
 }
 .lowerfooter > div > span:hover {
   color: brown;
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .lists {
+    gap: 12px;
+    font-size: 15px;
+  }
+  .lowerfooter > div {
+    font-size: 12px;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .lists {
+    display: flex;
+    justify-content: space-around;
+    font-size: 9px;
+  }
+  .lowerfooter > div {
+    font-size: 8px;
+  }
 }

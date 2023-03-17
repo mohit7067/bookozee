@@ -5,3 +5,14 @@
   align-items: center;
   gap: 30px;
 }
+@media (min-width: 481px) and (max-width: 768px) {
+  .homeContainer {
+    padding: 15px;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .homeContainer {
+    width: 100%;
+    gap: 10px;
+  }
+}

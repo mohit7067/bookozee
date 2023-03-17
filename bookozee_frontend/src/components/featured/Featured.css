@@ -63,3 +63,42 @@
 .featuredTitle > img {
   margin-top: 4px;
 }
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .firstbox {
+    height: 250px;
+  }
+  .secondbox {
+    height: 200px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .firstbox {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    height: 300px;
+  }
+  .secondbox {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    height: 260px;
+    margin-top: 20px;
+  }
+  .firstbox {
+    height: 200px;
+  }
+  .secondbox {
+    height: 130px;
+  }
+  .featuredTitle > h2 {
+    text-shadow: 1px 1px 2px black;
+    font-size: 15px;
+  }
+  .featuredTitle > img {
+    margin-top: 4px;
+    width: 20px;
+  }
+}

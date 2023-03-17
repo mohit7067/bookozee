@@ -287,6 +287,12 @@ const Header = ({ type }) => {
                         </button>
                       </div>
                     </div>
+                    <button
+                      className="doneOptions"
+                      onClick={() => setopenOptions(false)}
+                    >
+                      Done
+                    </button>
                   </div>
                 )}
               </div>

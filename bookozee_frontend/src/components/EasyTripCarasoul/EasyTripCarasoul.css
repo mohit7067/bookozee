@@ -1,7 +1,33 @@
 .easytripsliderimg {
-  width: 140px;
   height: 140px;
+  width: 100%;
 }
 .easytripslidertext {
   margin-top: 0px;
+  font-size: 12px;
+}
+.checkkro {
+  width: 200px;
+}
+.swiper-container {
+  width: 100%;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .easytripsliderimg {
+    width: 105px;
+    height: 110px;
+  }
+  .easytripslidertext {
+    font-size: 13px;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .swiper-container {
+    width: 100%;
+  }
+
+  .easytripslidertext {
+    font-size: 10px;
+  }
 }

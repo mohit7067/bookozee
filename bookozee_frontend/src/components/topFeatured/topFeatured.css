@@ -34,3 +34,39 @@
 .topfeaturedTitles > h2 {
   margin-top: -22px;
 }
+@media (min-width: 481px) and (max-width: 768px) {
+  .topfeaturedTitles > h1 {
+    font-size: 25px;
+  }
+  .topfeaturedTitles > h2 {
+    font-size: 20px;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .topfeatured {
+    margin-top: 70px;
+    gap: 0.2px;
+  }
+  .topfeaturedItem {
+    position: relative;
+    color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 150px;
+    flex: 1;
+    margin: 5px;
+  }
+  .topfeaturedTitles {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    text-shadow: 1px 1px 2px black;
+  }
+  .topfeaturedTitles > h1 {
+    font-size: 15px;
+  }
+  .topfeaturedTitles > h2 {
+    font-size: 10px;
+    margin-top: -10px;
+  }
+}

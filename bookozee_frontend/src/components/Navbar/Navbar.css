@@ -4,7 +4,14 @@
   display: flex;
   justify-content: center;
 }
-
+.navUserProfile {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.mobileNav {
+  display: none;
+}
 .navContainer {
   width: 100%;
   margin-top: 12px;
@@ -29,4 +36,37 @@
   font-size: 13px;
   font-weight: bold;
   border: 1px solid blue;
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .navbar {
+    width: 100%;
+  }
+  .navContainer {
+    max-width: 95%;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .navbar {
+    width: 100%;
+  }
+  .navContainer {
+    max-width: 95%;
+  }
+  .navItems {
+    display: none;
+  }
+  .logo {
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  }
+  .navUserProfile {
+    display: none;
+  }
+  .mobileNav {
+    display: block;
+    font-weight: bold;
+    cursor: pointer;
+  }
 }

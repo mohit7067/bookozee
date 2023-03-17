@@ -32,7 +32,9 @@
 .tpCity {
   text-transform: capitalize;
 }
-
+.swiper-container {
+  width: 100%;
+}
 .swiper-button-next {
   background-image: url(../../Images/right-arrow.png);
   background-repeat: no-repeat;
@@ -44,7 +46,6 @@
   margin-top: -40px;
   margin-right: -7px;
 }
-
 .swiper-button-prev {
   background-image: url(../../Images/left-arrow.png);
   background-repeat: no-repeat;
@@ -56,6 +57,7 @@
   margin-top: -40px;
   margin-left: -7px;
 }
+
 .swiper-button-next::after {
   display: none;
 }
@@ -89,4 +91,106 @@
 .tpToppropertyimg {
   width: 300px;
   height: 240px;
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .tpsliderimgcontainer {
+    width: 210px;
+  }
+  .tpToppropertyimg {
+    width: 210px;
+    height: 200px;
+  }
+  .sliderskeletonimgcontainer {
+    width: 210px;
+    height: 200px;
+    margin-bottom: 6px;
+  }
+  .sliderskeletontextcontainer {
+    width: 210px;
+    height: 60px;
+  }
+  .tpCity {
+    font-size: 13px;
+  }
+  .tpPrice {
+    font-size: 13px;
+  }
+  .tpPropertyRatings > div {
+    font-size: 10px;
+    padding: 4px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .swiper-button-prev {
+    background-image: url(../../Images/left-arrow.png);
+    background-repeat: no-repeat;
+    background-size: 40% auto;
+    background-color: transparent;
+    width: 40px;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-left: -20px;
+  }
+  .swiper-button-next {
+    background-image: url(../../Images/right-arrow.png);
+    background-repeat: no-repeat;
+    background-size: 40% auto;
+    background-position: center;
+    background-color: transparent;
+    width: 40px;
+    border-radius: 50%;
+    margin-top: -40px;
+    margin-right: -20px;
+  }
+  .tpsliderimgcontainer {
+    width: 85px;
+  }
+  .tpToppropertyimg {
+    width: 85px;
+    height: 100px;
+  }
+  .sliderskeletonimgcontainer {
+    width: 85px;
+    height: 100px;
+    margin-bottom: 6px;
+  }
+  .sliderskeletontextcontainer {
+    width: 85px;
+    height: 37px;
+    border-radius: 5px;
+  }
+  .tpsliderimgcontainer > h4 {
+    font-size: 10px;
+  }
+  .tpCity {
+    font-size: 7px;
+  }
+  .tpPrice {
+    font-size: 7px;
+    margin-top: -8px;
+  }
+  .tppricecityCotainer {
+    margin-top: -22px;
+    display: flex;
+    color: gray;
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+  .slider > h2 {
+    font-size: 17px;
+  }
+  .toppropertysubHeading {
+    color: gray;
+    margin-top: -12px;
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  .tpPropertyRatings > div {
+    font-size: 7px;
+    padding: 3px;
+  }
+  .tpPropertyRatings > p {
+    font-size: 8px;
+  }
 }

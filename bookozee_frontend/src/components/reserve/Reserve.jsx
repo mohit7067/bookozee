@@ -3,11 +3,13 @@ import { RxCross2 } from "react-icons/rx";
 import useFetch from "../../hooks/useFetch";
 import "./reserve.css";
 import { HiOutlineCheck } from "react-icons/hi";
+import axios, { all } from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Reserve = ({ setOpenModal, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
-
+  const navigate = useNavigate();
   const alldates = JSON.parse(localStorage.getItem("alldates"));
   const HandlePush = (value) => {
     setSelectedRooms([...selectedRooms, value]);
@@ -25,13 +27,34 @@ const Reserve = ({ setOpenModal, hotelId }) => {
     setSelectedRooms(selectedRooms.filter((item) => item !== value));
   };
 
-  const HandleClick = () => {};
+  const HandleClick = async () => {
+    try {
+      await Promise.all(
+        selectedRooms.map((roomId) => {
+          const res = axios.put(`/rooms/availability/${roomId}`, {
+            dates: alldates,
+          });
+          return res.data;
+        })
+      );
+      setOpenModal(false);
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="reserve">
       <div className="rContainer">
         <RxCross2 className="rClose" onClick={() => setOpenModal(false)} />
-        <span style={{ fontWeight: "bold", fontSize: "15px", color: "gray" }}>
+        <span
+          style={{
+            fontWeight: "bold",
+            fontSize: "15px",
+            color: "gray",
+          }}
+        >
           Select your rooms:
         </span>
         {data?.map((item) => {
@@ -49,7 +72,13 @@ const Reserve = ({ setOpenModal, hotelId }) => {
                 </div>
               </div>
               <div>
-                <span style={{ color: "gray" }}>Choose Room Numbers:</span>
+                <span
+                  style={{
+                    color: "gray",
+                  }}
+                >
+                  Choose Room Numbers:
+                </span>
                 <div className="rRoomContainer">
                   {item?.roomNumbers.map((roomNumber) => {
                     return (
@@ -64,15 +93,21 @@ const Reserve = ({ setOpenModal, hotelId }) => {
                         {!selectedRooms.includes(roomNumber._id) && (
                           <HiOutlineCheck
                             onClick={() => HandlePush(roomNumber._id)}
-                            className="rSelect"
-                            disabled={!isAvailable(roomNumber)}
+                            className={
+                              !isAvailable(roomNumber)
+                                ? "noAvailableChecked"
+                                : "rSelect"
+                            }
                           />
                         )}
                         {selectedRooms.includes(roomNumber._id) && (
-                          <RxCross2
+                          <HiOutlineCheck
                             onClick={() => HandlePull(roomNumber._id)}
-                            className="rDrop"
-                            disabled={!isAvailable(roomNumber)}
+                            className={
+                              !isAvailable(roomNumber)
+                                ? "noAvailableChecked"
+                                : "rDrop"
+                            }
                           />
                         )}
                       </div>

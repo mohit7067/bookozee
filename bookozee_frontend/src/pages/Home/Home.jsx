@@ -20,9 +20,9 @@ const Home = () => {
         <Featured />
         <TopProperties />
         <EasyTrip />
-        <MailList />
-        <Footer />
       </div>
+      <MailList />
+      <Footer />
     </div>
   );
 };
