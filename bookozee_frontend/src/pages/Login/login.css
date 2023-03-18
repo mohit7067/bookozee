@@ -92,3 +92,16 @@
     transform: rotate(360deg);
   }
 }
+@media (min-width: 481px) and (max-width: 768px) {
+  .loginForm {
+    width: 35%;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .loginForm {
+    width: 65%;
+  }
+  .loginContainer {
+    padding-top: 100px;
+  }
+}

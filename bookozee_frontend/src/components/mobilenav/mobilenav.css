@@ -1,0 +1,27 @@
+.mbNavContainer {
+  height: 100%;
+  width: 50%;
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background: #003480;
+}
+.mbNavList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: white;
+}
+
+.mbNavListItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.navRoutes {
+  padding: 50px 0px 50px 20px;
+}

@@ -93,3 +93,17 @@
     transform: rotate(360deg);
   }
 }
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .registerForm {
+    width: 35%;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .registerForm {
+    width: 65%;
+  }
+  .registerContainer {
+    padding-top: 100px;
+  }
+}

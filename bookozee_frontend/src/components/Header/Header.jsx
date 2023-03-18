@@ -160,10 +160,6 @@ const Header = ({ type }) => {
             <MdAttractions />
             <span>Attractions</span>
           </div>
-          <div className="headerListItem">
-            <FaTaxi />
-            <span>Airport taxis</span>
-          </div>
         </div>
         {type !== "list" && (
           <>
