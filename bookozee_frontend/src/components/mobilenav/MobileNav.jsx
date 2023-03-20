@@ -1,5 +1,5 @@
 import { AiFillCar } from "react-icons/ai";
-import { FaTaxi } from "react-icons/fa";
+import { FaHotel, FaTaxi } from "react-icons/fa";
 import "./mobilenav.css";
 import {
   MdAttractions,
@@ -24,16 +24,21 @@ const MobileNav = ({ setOpen }) => {
   return (
     <div className="mbNavContainer">
       <RxCross2
-        style={{ color: "white", border: "1px solid white" }}
+        style={{ color: "white", float: "right", border: "1px solid white" }}
         onClick={() => setOpen(false)}
       />
       <div className="navRoutes">
         <div className="mbNavList">
           {user && (
-            <div className="mbNavListItem ">
-              <CgProfile />
-              <span>{user?.username}</span>
-            </div>
+            <Link
+              to="/user/profile"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              <div className="mbNavListItem ">
+                <CgProfile />
+                <span>{user?.username}</span>
+              </div>
+            </Link>
           )}
           {!user && (
             <Link
@@ -57,26 +62,27 @@ const MobileNav = ({ setOpen }) => {
               </div>
             </Link>
           )}
-          <div className="mbNavListItem ">
+          <Link
+            to="/"
+            style={{ color: "white", textDecoration: "none" }}
+            className="mbNavListItem "
+          >
             <MdHotel />
             <span>Stays</span>
-          </div>
+          </Link>
 
-          <div className="mbNavListItem ">
-            <MdFlight />
-            <span>Flights</span>
-          </div>
-          <div className="mbNavListItem ">
-            <MdWorkHistory />
-            <span>Flight + Hotel</span>
-          </div>
+          <Link
+            to="/hotels"
+            style={{ color: "white", textDecoration: "none" }}
+            className="mbNavListItem "
+          >
+            <FaHotel />
+            <span>Nearby Hotels</span>
+          </Link>
+
           <div className="mbNavListItem ">
             <AiFillCar />
             <span>Car rentals</span>
-          </div>
-          <div className="mbNavListItem ">
-            <MdAttractions />
-            <span>Attractions</span>
           </div>
 
           {user && (

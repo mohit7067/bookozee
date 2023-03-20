@@ -1,19 +1,21 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
 const Login = () => {
+  const location = useLocation();
   const [show, setShow] = useState(false);
   const [credentials, setCredentials] = useState({
     email: undefined,
     password: undefined,
   });
   const navigate = useNavigate();
+  const comingFrom = location.state.from.pathname;
   const { loading, error, dispatch } = useContext(AuthContext);
-
   const HandleChange = (e) => {
     setCredentials((prev) => ({
       ...prev,
@@ -28,16 +30,27 @@ const Login = () => {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       if (res) {
-        navigate("/");
+        navigate(comingFrom);
       }
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      document.getElementById("loginForm").reset();
+      // toast.error(err.response.data.message, {
+      //   position: "top-center",
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      //   theme: "light",
+      // });
     }
   };
-
+  error && console.log(typeof error.message);
   return (
     <div className="loginContainer">
-      <form className="loginForm" onSubmit={HandleLogin}>
+      <form className="loginForm" id="loginForm" onSubmit={HandleLogin}>
         <h1>Bookozee.com (Log In)</h1>
         <input
           type="email"
@@ -68,19 +81,20 @@ const Login = () => {
           <span
             style={{ color: "red", textAlign: "right", marginTop: "-10px" }}
           >
-            {error.message}
+            {`${error?.message}`}
           </span>
         )}
         <button className="loginBtn">
           {loading ? <div class="lds-dual-ring"></div> : "Login"}
         </button>
         <p>
-          New to Bookozee please{" "}
+          Don't have an account ?{" "}
           <Link style={{ color: "inherit" }} to="/register">
             Signup
           </Link>
         </p>
       </form>
+      <ToastContainer />
     </div>
   );
 };

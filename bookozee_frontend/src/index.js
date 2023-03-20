@@ -8,12 +8,11 @@ import { AuthContextProvider } from "./context/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 axios.defaults.baseURL = "http://localhost:8080/api";
+axios.defaults.withCredentials = true;
 root.render(
-  <React.StrictMode>
-    <AuthContextProvider>
-      <SearchContextProvider>
-        <App />
-      </SearchContextProvider>
-    </AuthContextProvider>
-  </React.StrictMode>
+  <AuthContextProvider>
+    <SearchContextProvider>
+      <App />
+    </SearchContextProvider>
+  </AuthContextProvider>
 );

@@ -1,25 +1,26 @@
 import "./Header.css";
 import "react-toastify/dist/ReactToastify.css";
 import { MdHotel } from "react-icons/md";
-import { MdFlight } from "react-icons/md";
 import { MdWorkHistory } from "react-icons/md";
 import { AiFillCar } from "react-icons/ai";
 import { MdAttractions } from "react-icons/md";
-import { FaTaxi } from "react-icons/fa";
+import { FaHotel } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
 import { DateRange } from "react-date-range";
 import { ToastContainer, toast } from "react-toastify";
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
 import { SearchContext } from "../../context/SearchContext";
+
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false);
   const [destination, setDestination] = useState("");
   const { dispatch } = useContext(SearchContext);
+
   const [dates, setDates] = useState([
     {
       startDate: new Date(),
@@ -140,25 +141,27 @@ const Header = ({ type }) => {
         }
       >
         <div className="headerList">
-          <div className="headerListItem active">
+          <Link
+            to="/"
+            className="headerListItem active"
+            style={{ color: "white", textDecoration: "none" }}
+          >
             <MdHotel />
             <span>Stays</span>
-          </div>
-          <div className="headerListItem ">
-            <MdFlight />
-            <span>Flights</span>
-          </div>
-          <div className="headerListItem ">
-            <MdWorkHistory />
-            <span>Flight + Hotel</span>
-          </div>
+          </Link>
+
+          <Link
+            to="/hotels"
+            style={{ color: "white", textDecoration: "none" }}
+            className="headerListItem "
+          >
+            <FaHotel />
+            <span>Nearby Hotels</span>
+          </Link>
+
           <div className="headerListItem ">
             <AiFillCar />
             <span>Car rentals</span>
-          </div>
-          <div className="headerListItem ">
-            <MdAttractions />
-            <span>Attractions</span>
           </div>
         </div>
         {type !== "list" && (

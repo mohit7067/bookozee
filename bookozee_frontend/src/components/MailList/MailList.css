@@ -46,23 +46,33 @@
 }
 @media (min-width: 320px) and (max-width: 480px) {
   .mailInputContainer > input {
-    width: 200px;
-    height: 40px;
+    width: 150px;
+    height: 30px;
     border-radius: 4px;
     font-size: 20px;
   }
   .mailInputContainer > input::placeholder {
-    font-size: 18px;
+    font-size: 15px;
     padding-left: 5px;
   }
 
   .mailInputContainer > button {
-    height: 46px;
+    height: 36px;
     width: 100px;
     color: white;
-    font-size: 20px;
+    font-size: 15px;
     background-color: #0070c2;
     border: none;
     border-radius: 4px;
+  }
+  .mailTitel {
+    font-size: 22px;
+    margin-bottom: -1px;
+    text-align: center;
+  }
+  .mailDesc {
+    font-size: 12px;
+    text-align: center;
+    color: lightgray;
   }
 }

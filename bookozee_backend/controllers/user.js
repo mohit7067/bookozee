@@ -9,7 +9,8 @@ const updateUser = async (req, res, next) => {
       },
       { new: true }
     );
-    res.status(200).json(updateUser);
+    const { password, isAdmin, ...otherOption } = updateUser._doc;
+    res.status(200).json(otherOption);
   } catch (error) {
     next(error);
   }

@@ -1,0 +1,92 @@
+.pContainer {
+  width: 100%;
+  background: #f2f5f6;
+}
+.prWrapper {
+  width: 100%;
+  margin-top: -20px;
+}
+
+.prWrapper > h2 {
+  font-weight: 400;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  padding: 10px;
+  color: #1e2937;
+}
+
+.prInfo {
+  display: flex;
+  gap: 30px;
+  padding-bottom: 50px;
+}
+
+.prInfoTexts {
+  padding: 30px;
+  width: 30%;
+}
+.prNameupdate {
+  background-color: white;
+  padding: 30px;
+  width: 50%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius: 7px;
+}
+.prNameupdate > form > label {
+  font-size: 17px;
+}
+.prNameupdate > form > input {
+  width: 50%;
+  height: 36px;
+  border-radius: 7px;
+  border: 1px solid gray;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.prNameupdate > form > button {
+  background: #1e2937;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 15px;
+  float: right;
+  cursor: pointer;
+}
+.prInfoTexts > h3 {
+  font-weight: 400;
+}
+.prInfoTexts > p {
+  color: gray;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .prInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-bottom: 50px;
+  }
+
+  .prInfoTexts {
+    padding: 0px;
+    width: 100%;
+    text-align: center;
+  }
+  .prNameupdate {
+    background-color: white;
+    padding: 15px;
+    width: 87%;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    border-radius: 7px;
+    margin: auto;
+  }
+  .prNameupdate > form > input {
+    width: 80%;
+    height: 36px;
+    border-radius: 7px;
+    border: 1px solid gray;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

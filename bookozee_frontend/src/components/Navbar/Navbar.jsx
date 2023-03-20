@@ -38,11 +38,23 @@ const Navbar = () => {
             </div>
             {openmodal && (
               <div className="profileModalContainer">
-                <div>
-                  <CgProfile />
-                  <span>Profile</span>
-                </div>
-                <div onClick={HandleLogout}>
+                <Link
+                  to="/user/profile"
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                  }}
+                >
+                  <div className="profileModalContainerbox">
+                    <CgProfile />
+                    <span>Profile</span>
+                  </div>
+                </Link>
+
+                <div
+                  onClick={HandleLogout}
+                  className="profileModalContainerbox"
+                >
                   <BiLogOut />
                   <span>Logout</span>
                 </div>

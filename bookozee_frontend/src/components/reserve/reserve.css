@@ -101,9 +101,11 @@
 }
 .rDesc {
   font-size: 300;
+  font-size: 15px;
 }
 .rMax {
-  font-size: 12px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .rPrice {
@@ -128,4 +130,34 @@
 .noAvailableChecked {
   cursor: not-allowed;
   color: white;
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .rContainer {
+    height: 80%;
+    width: 70%;
+    background-color: white;
+    padding: 20px;
+    position: relative;
+    overflow-y: scroll;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .rContainer {
+    height: 85%;
+    width: 85%;
+    background-color: white;
+    padding: 20px;
+    position: relative;
+    overflow-y: scroll;
+  }
+  .rItem {
+    display: flex;
+    gap: 10px;
+    height: 150px;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    overflow-y: scroll;
+  }
 }

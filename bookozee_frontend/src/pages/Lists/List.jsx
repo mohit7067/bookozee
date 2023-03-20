@@ -2,19 +2,59 @@ import "./list.css";
 import Header from "../../components/Header/Header";
 import Navbar from "../../components/Navbar/Navbar";
 import { useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchHotel from "../../components/SearchHotel/SearchHotel";
 import useFetch from "../../hooks/useFetch";
-import HotelSkeleton from "../../components/HotelSkeleton/HotelSkeleton";
+import axios from "axios";
 
 const List = () => {
   const location = useLocation();
-  const [destination, setDestination] = useState(location.state.destination);
-  const [dates, setDates] = useState(location.state.dates);
+  const [destination, setDestination] = useState("");
+
+  useEffect(() => {
+    const GetLocation = async () => {
+      try {
+        const res = await axios({
+          method: "get",
+          url: "https://ipapi.co/json",
+          withCredentials: false,
+        });
+        if (location.state) {
+          setDestination(location.state.destination);
+        } else {
+          setDestination(res.data.city);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    GetLocation();
+  }, [location.state]);
+
+  const [dates, setDates] = useState(
+    location.state
+      ? location.state.dates
+      : [
+          {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: "selection",
+          },
+        ]
+  );
   const [opendate, setOpenDate] = useState(false);
-  const [options, setOptions] = useState(location.state.options);
+  const [options, setOptions] = useState(
+    location.state
+      ? location.state.options
+      : {
+          adult: 1,
+          children: 0,
+          room: 1,
+        }
+  );
+
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
   const { data, loading, error, reFetch } = useFetch(
@@ -22,6 +62,7 @@ const List = () => {
   );
   const HandleClick = () => {
     reFetch();
+    setOpenDate(false);
   };
   return (
     <div>
@@ -53,6 +94,7 @@ const List = () => {
                   onChange={(item) => setDates([item.selection])}
                   ranges={dates}
                   minDate={new Date()}
+                  className="dateRangerList"
                 />
               )}
             </div>
@@ -119,9 +161,23 @@ const List = () => {
               <div style={{ textAlign: "center" }}>loading...</div>
             ) : (
               <>
-                {data?.map((item) => {
-                  return <SearchHotel item={item} key={item._id} />;
-                })}
+                {data.length > 0 ? (
+                  data?.map((item) => {
+                    return <SearchHotel item={item} key={item._id} />;
+                  })
+                ) : (
+                  <div>
+                    <div className="noHotelContainer">
+                      <img
+                        src={
+                          "http://atlas-content-cdn.pixelsquid.com/stock-images/cartoon-hotel-Av5P0G6-600.jpg"
+                        }
+                        alt=""
+                      />
+                      <h1>Currently No Hotel Available At {destination} !</h1>
+                    </div>
+                  </div>
+                )}
               </>
             )}
           </div>

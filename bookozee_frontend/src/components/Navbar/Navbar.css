@@ -39,6 +39,7 @@
 }
 .profileModalContainer {
   border: 1px solid white;
+  width: 80px;
   border-radius: 5px;
   position: absolute;
   z-index: 3;
@@ -47,15 +48,15 @@
   flex-direction: column;
   gap: 20px;
   background: white;
-  width: 80px;
   margin-top: 10px;
 }
-.profileModalContainer > div {
+.profileModalContainerbox {
   display: flex;
   align-items: center;
   gap: 7px;
   color: black;
   justify-content: center;
+  cursor: pointer;
 }
 
 @media (min-width: 481px) and (max-width: 768px) {

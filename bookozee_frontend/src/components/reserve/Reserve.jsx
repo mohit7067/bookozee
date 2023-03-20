@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import useFetch from "../../hooks/useFetch";
 import "./reserve.css";
 import { HiOutlineCheck } from "react-icons/hi";
-import axios, { all } from "axios";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { AuthContext } from "../../context/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
 const Reserve = ({ setOpenModal, hotelId }) => {
+  const { user } = useContext(AuthContext);
+  const [showSuccess, setShowSuccess] = useState(false);
+  const timerId = useRef(null);
+
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const navigate = useNavigate();
@@ -37,8 +42,26 @@ const Reserve = ({ setOpenModal, hotelId }) => {
           return res.data;
         })
       );
-      setOpenModal(false);
-      navigate("/");
+      const userId = user._id;
+      const res = await axios.post("/user/booking", { userId, hotelId });
+
+      if (res) {
+        setShowSuccess(true);
+        setOpenModal(false);
+        toast.success("Your booking has been successful", {
+          position: "top-center",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+        const timerId = setTimeout(() => {
+          navigate("/");
+        }, 3000);
+      }
     } catch (err) {
       console.log(err);
     }
@@ -63,8 +86,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
               <div className="rItemInfo">
                 <div className="rTitle">{item?.title}</div>
                 <div className="rDesc">{item?.desc}</div>
-                <div className="rMax">{item?.desc}</div>
-                <div className="rTitle">
+                <div className="rMax">
                   Max People: <b> {item?.maxPeople}</b>
                 </div>
                 <div className="rPrice">
@@ -122,6 +144,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
           Reserve Now !
         </button>
       </div>
+      <ToastContainer />
     </div>
   );
 };
