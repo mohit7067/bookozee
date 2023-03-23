@@ -39,9 +39,10 @@
 }
 .profileModalContainer {
   border: 1px solid white;
-  width: 80px;
+  width: 150px;
   border-radius: 5px;
   position: absolute;
+  right: 120px;
   z-index: 3;
   padding: 10px;
   display: flex;
@@ -49,13 +50,14 @@
   gap: 20px;
   background: white;
   margin-top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .profileModalContainerbox {
   display: flex;
   align-items: center;
   gap: 7px;
   color: black;
-  justify-content: center;
+  justify-content: left;
   cursor: pointer;
 }
 
@@ -65,6 +67,21 @@
   }
   .navContainer {
     max-width: 95%;
+  }
+  .profileModalContainer {
+    border: 1px solid white;
+    width: 150px;
+    border-radius: 5px;
+    position: absolute;
+    right: 6px;
+    z-index: 3;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background: white;
+    margin-top: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }
 @media (min-width: 320px) and (max-width: 480px) {

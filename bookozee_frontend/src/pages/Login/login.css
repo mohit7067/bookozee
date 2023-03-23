@@ -50,11 +50,12 @@
   font-size: 25px;
 }
 
-.loginForm > p {
+.loginForm > div {
   font-size: 12px;
   margin: 0;
-  margin-top: -8px;
+  margin-top: -10px;
   text-align: right;
+  justify-content: space-between;
 }
 .loginForm > button {
   width: 100%;
@@ -69,7 +70,16 @@
 .loginForm > input::placeholder {
   font-size: 15px;
 }
-
+.lgFsmall {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  font-size: 11px;
+}
+.lgFprgotsmall {
+  text-decoration: underline;
+  font-size: 11px;
+}
 .lds-dual-ring {
   display: inline-block;
 }
@@ -99,9 +109,16 @@
 }
 @media (min-width: 320px) and (max-width: 480px) {
   .loginForm {
-    width: 65%;
+    width: 75%;
   }
   .loginContainer {
     padding-top: 100px;
+  }
+  .lgFsmall {
+    font-size: 10px;
+  }
+  .lgFprgotsmall {
+    text-decoration: underline;
+    font-size: 10px;
   }
 }

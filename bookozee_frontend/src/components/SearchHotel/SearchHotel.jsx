@@ -1,9 +1,27 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./searchhotel.css";
 
-const SearchHotel = ({ item }) => {
+const SearchHotel = ({ item, bookingDetails, type }) => {
+  const startDate =
+    type === "booking" && bookingDetails.dates.startDate.split("T")[0];
+  const endDate =
+    type === "booking" && bookingDetails.dates.endDate.split("T")[0];
+
+  const [check, setCheck] = useState(false);
+
+  console.log(startDate === new Date().toISOString().split("T")[0]);
+
+  console.log(startDate, new Date().toISOString().split("T")[0]);
+
   return (
-    <div className="searchHotel">
+    <div className={type === "booking" ? "searchHotelub" : "searchHotel"}>
+      {type === "booking" &&
+        endDate === new Date().toISOString().split("T")[0] && (
+          <div className="bookingClosed">
+            <h4>This booking has been closed !</h4>
+          </div>
+        )}
       <div className="shContainer">
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDdFGmysLvAeuDkI1OVL703pIHV-xKzlhBCg&usqp=CAU"
@@ -25,6 +43,24 @@ const SearchHotel = ({ item }) => {
           You can cancel later, so lock in this great price today !
         </span>
       </div>
+      {type === "booking" && (
+        <div className="ubContainer">
+          <div>
+            <label>Dates:-</label>
+            <p>
+              {startDate} to {endDate}
+            </p>
+          </div>
+          <div>
+            <label>Room Numbers:-</label>
+            <div className="roomNumberContainer">
+              {bookingDetails?.roomNumbers.map((roomNumber, i) => {
+                return <p key={i}>{roomNumber}</p>;
+              })}
+            </div>
+          </div>
+        </div>
+      )}
       <div className="shDetails">
         {item.rating > 0 && (
           <div className="shRatings">
@@ -36,7 +72,9 @@ const SearchHotel = ({ item }) => {
           <span className="shPrice">${item.cheapestPrice}</span>
           <span className="shTaxOp">Includes taxes and fees</span>
           <Link to={`/hotel/${item._id}`}>
-            <button className="shCheckButton">See availability</button>
+            <button className="shCheckButton">
+              {type === "booking" ? "Cancel Booking" : "See availability"}
+            </button>
           </Link>
         </div>
       </div>

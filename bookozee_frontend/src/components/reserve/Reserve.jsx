@@ -10,14 +10,16 @@ import { ToastContainer, toast } from "react-toastify";
 const Reserve = ({ setOpenModal, hotelId }) => {
   const { user } = useContext(AuthContext);
   const [showSuccess, setShowSuccess] = useState(false);
-  const timerId = useRef(null);
-
+  const [roomNumber, setRoomNumber] = useState([]);
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const navigate = useNavigate();
   const alldates = JSON.parse(localStorage.getItem("alldates"));
-  const HandlePush = (value) => {
+  const Dates = JSON.parse(localStorage.getItem("Dates"));
+
+  const HandlePush = (value, num) => {
     setSelectedRooms([...selectedRooms, value]);
+    setRoomNumber([...roomNumber, num]);
   };
 
   const isAvailable = (roomNumber) => {
@@ -28,8 +30,9 @@ const Reserve = ({ setOpenModal, hotelId }) => {
     return !isFound;
   };
 
-  const HandlePull = (value) => {
+  const HandlePull = (value, num) => {
     setSelectedRooms(selectedRooms.filter((item) => item !== value));
+    setRoomNumber(roomNumber.filter((item) => item !== num));
   };
 
   const HandleClick = async () => {
@@ -43,7 +46,12 @@ const Reserve = ({ setOpenModal, hotelId }) => {
         })
       );
       const userId = user._id;
-      const res = await axios.post("/user/booking", { userId, hotelId });
+      const res = await axios.post("/user/booking", {
+        userId,
+        hotelId,
+        dates: { startDate: Dates.startDate, endDate: Dates.endDate },
+        roomNumbers: roomNumber,
+      });
 
       if (res) {
         setShowSuccess(true);
@@ -114,7 +122,9 @@ const Reserve = ({ setOpenModal, hotelId }) => {
                         </label>
                         {!selectedRooms.includes(roomNumber._id) && (
                           <HiOutlineCheck
-                            onClick={() => HandlePush(roomNumber._id)}
+                            onClick={() =>
+                              HandlePush(roomNumber._id, roomNumber.number)
+                            }
                             className={
                               !isAvailable(roomNumber)
                                 ? "noAvailableChecked"
@@ -124,7 +134,9 @@ const Reserve = ({ setOpenModal, hotelId }) => {
                         )}
                         {selectedRooms.includes(roomNumber._id) && (
                           <HiOutlineCheck
-                            onClick={() => HandlePull(roomNumber._id)}
+                            onClick={() =>
+                              HandlePull(roomNumber._id, roomNumber.number)
+                            }
                             className={
                               !isAvailable(roomNumber)
                                 ? "noAvailableChecked"

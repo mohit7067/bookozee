@@ -28,9 +28,9 @@ const Register = () => {
     try {
       const res = await axios.post("/auth/register", credentials);
       dispatch({ type: "REGISTER_SUCCESS", payload: res.data });
-      //   if (res) {
-      //     navigate("/", { replace: true });
-      //   }
+      if (res) {
+        navigate("/login", { replace: true });
+      }
     } catch (err) {
       console.log(err);
       dispatch({
@@ -39,7 +39,13 @@ const Register = () => {
       });
     }
   };
-
+  const HandleNavigate = () => {
+    dispatch({
+      type: "REGISTER_FAILURE",
+      payload: null,
+    });
+    navigate("/login");
+  };
   return (
     <div className="registerContainer">
       <form className="registerForm" onSubmit={HandleLogin}>
@@ -84,14 +90,28 @@ const Register = () => {
           </span>
         )}
         <button className="registerBtn">
-          {loading ? <div class="lds-dual-ring"></div> : "Signup"}
+          {loading ? <div className="lds-dual-ring"></div> : "Signup"}
         </button>
-        <p>
-          Already have an account !{" "}
-          <Link style={{ color: "inherit" }} to="/login">
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "5px",
+            textAlign: "center",
+          }}
+        >
+          Already have an account !{"  "}
+          <p
+            style={{
+              color: "inherit",
+              textDecoration: "underline",
+              cursor: "pointer",
+            }}
+            onClick={HandleNavigate}
+          >
             Login
-          </Link>
-        </p>
+          </p>
+        </div>
       </form>
     </div>
   );

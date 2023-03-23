@@ -6,6 +6,7 @@ import { CgProfile } from "react-icons/cg";
 import { RxHamburgerMenu } from "react-icons/rx";
 import MobileNav from "../mobilenav/MobileNav";
 import { BiLogOut } from "react-icons/bi";
+import { BsBookmarks } from "react-icons/bs";
 const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
   const [mbnavopen, setMbnavopen] = useState(false);
@@ -48,6 +49,18 @@ const Navbar = () => {
                   <div className="profileModalContainerbox">
                     <CgProfile />
                     <span>Profile</span>
+                  </div>
+                </Link>
+                <Link
+                  to="/user/bookings"
+                  style={{
+                    color: "black",
+                    textDecoration: "none",
+                  }}
+                >
+                  <div className="profileModalContainerbox">
+                    <BsBookmarks />
+                    <span>Your bookings</span>
                   </div>
                 </Link>
 

@@ -1,9 +1,6 @@
 import "./Header.css";
 import "react-toastify/dist/ReactToastify.css";
 import { MdHotel } from "react-icons/md";
-import { MdWorkHistory } from "react-icons/md";
-import { AiFillCar } from "react-icons/ai";
-import { MdAttractions } from "react-icons/md";
 import { FaHotel } from "react-icons/fa";
 import { FaCalendarAlt } from "react-icons/fa";
 import { BsFillPersonFill } from "react-icons/bs";
@@ -129,7 +126,13 @@ const Header = ({ type }) => {
       const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate);
 
       localStorage.setItem("alldates", JSON.stringify(alldates));
-
+      localStorage.setItem(
+        "Dates",
+        JSON.stringify({
+          startDate: dates[0].startDate,
+          endDate: dates[0].endDate,
+        })
+      );
       navigate("/hotels", { state: { destination, dates, options } });
     }
   };
@@ -158,11 +161,6 @@ const Header = ({ type }) => {
             <FaHotel />
             <span>Nearby Hotels</span>
           </Link>
-
-          <div className="headerListItem ">
-            <AiFillCar />
-            <span>Car rentals</span>
-          </div>
         </div>
         {type !== "list" && (
           <>

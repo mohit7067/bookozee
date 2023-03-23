@@ -1,19 +1,14 @@
 import { AiFillCar } from "react-icons/ai";
 import { FaHotel, FaTaxi } from "react-icons/fa";
 import "./mobilenav.css";
-import {
-  MdAttractions,
-  MdFlight,
-  MdHotel,
-  MdLogin,
-  MdWorkHistory,
-} from "react-icons/md";
+import { MdHotel, MdLogin } from "react-icons/md";
 import { RxCross2 } from "react-icons/rx";
 import { CgProfile } from "react-icons/cg";
 import { BiLogOut } from "react-icons/bi";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import { BsBookmarks } from "react-icons/bs";
 
 const MobileNav = ({ setOpen }) => {
   const { user, dispatch } = useContext(AuthContext);
@@ -63,6 +58,18 @@ const MobileNav = ({ setOpen }) => {
             </Link>
           )}
           <Link
+            to="/user/bookings"
+            style={{
+              color: "white",
+              textDecoration: "none",
+            }}
+          >
+            <div className="mbNavListItem">
+              <BsBookmarks />
+              <span>Your bookings</span>
+            </div>
+          </Link>
+          <Link
             to="/"
             style={{ color: "white", textDecoration: "none" }}
             className="mbNavListItem "
@@ -79,11 +86,6 @@ const MobileNav = ({ setOpen }) => {
             <FaHotel />
             <span>Nearby Hotels</span>
           </Link>
-
-          <div className="mbNavListItem ">
-            <AiFillCar />
-            <span>Car rentals</span>
-          </div>
 
           {user && (
             <div className="mbNavListItem" onClick={HandleLogout}>

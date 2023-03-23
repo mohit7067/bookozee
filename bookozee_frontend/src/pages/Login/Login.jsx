@@ -2,7 +2,6 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { toast, ToastContainer } from "react-toastify";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
@@ -14,7 +13,7 @@ const Login = () => {
     password: undefined,
   });
   const navigate = useNavigate();
-  const comingFrom = location.state.from.pathname;
+
   const { loading, error, dispatch } = useContext(AuthContext);
   const HandleChange = (e) => {
     setCredentials((prev) => ({
@@ -30,24 +29,20 @@ const Login = () => {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       if (res) {
-        navigate(comingFrom);
+        navigate(location.state ? location.state.from.pathname : "/");
       }
     } catch (err) {
-      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+      dispatch({ type: "LOGIN_FAILURE", payload: "User not found !" });
       document.getElementById("loginForm").reset();
-      // toast.error(err.response.data.message, {
-      //   position: "top-center",
-      //   autoClose: 5000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "light",
-      // });
     }
   };
-  error && console.log(typeof error.message);
+  const HandleNavigate = () => {
+    dispatch({
+      type: "REGISTER_FAILURE",
+      payload: null,
+    });
+    navigate("/register");
+  };
   return (
     <div className="loginContainer">
       <form className="loginForm" id="loginForm" onSubmit={HandleLogin}>
@@ -81,20 +76,37 @@ const Login = () => {
           <span
             style={{ color: "red", textAlign: "right", marginTop: "-10px" }}
           >
-            {`${error?.message}`}
+            {error}
           </span>
         )}
         <button className="loginBtn">
-          {loading ? <div class="lds-dual-ring"></div> : "Login"}
+          {loading ? <div className="lds-dual-ring"></div> : "Login"}
         </button>
-        <p>
-          Don't have an account ?{" "}
-          <Link style={{ color: "inherit" }} to="/register">
-            Signup
-          </Link>
-        </p>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <p className="lgFprgotsmall">Forgot Password ?</p>
+          </div>
+          <div style={{}} className="lgFsmall">
+            {" "}
+            <p> Don't have an account ? </p>
+            <p
+              style={{
+                color: "inherit",
+                textDecoration: "underline",
+                cursor: "pointer",
+              }}
+              onClick={HandleNavigate}
+            >
+              Signup
+            </p>
+          </div>
+        </div>
       </form>
-      <ToastContainer />
     </div>
   );
 };

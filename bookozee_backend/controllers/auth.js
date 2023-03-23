@@ -27,7 +27,8 @@ const Login = async (req, response, next) => {
   const { email, password } = req.body;
   try {
     const user = await UserModel.findOne({ email });
-    if (!user) return next(createError(404, "user not found !"));
+    if (!user)
+      return next(createError(404, "email or password is incorrect !"));
 
     await bcrypt.compare(password, user.password, function (err, res) {
       if (res) {
