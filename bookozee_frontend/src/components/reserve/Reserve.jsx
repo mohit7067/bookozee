@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import useFetch from "../../hooks/useFetch";
 import "./reserve.css";
@@ -66,8 +66,8 @@ const Reserve = ({ setOpenModal, hotelId }) => {
           progress: undefined,
           theme: "colored",
         });
-        const timerId = setTimeout(() => {
-          navigate("/");
+        setTimeout(() => {
+          navigate("/user/bookings");
         }, 3000);
       }
     } catch (err) {
@@ -88,6 +88,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
         >
           Select your rooms:
         </span>
+        {loading && <p>loading...</p>}
         {data?.map((item) => {
           return (
             <div className="rItem" key={`${item?._id}${Math.random() * 1000}`}>

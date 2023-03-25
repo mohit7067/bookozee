@@ -1,13 +1,6 @@
-import { useContext } from "react";
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  useLocation,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import CheckAuth from "./components/CheckAuth/CheckAuth";
-import { AuthContext } from "./context/AuthContext";
+import Forgot from "./pages/forgotPassword/Forgot";
 import Home from "./pages/Home/Home";
 import Hotel from "./pages/Hotel/Hotel";
 import List from "./pages/Lists/List";
@@ -56,6 +49,7 @@ function App() {
               </CheckAuth>
             }
           />
+          <Route path="/forgot-password" element={<Forgot />} />
         </Routes>
       </BrowserRouter>
     </div>

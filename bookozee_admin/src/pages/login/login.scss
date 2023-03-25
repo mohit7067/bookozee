@@ -1,0 +1,124 @@
+.loginContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 160px;
+}
+.loginPassCont {
+  width: 100%;
+  position: relative;
+}
+.loginPassCont > input {
+  width: 100%;
+  height: 37px;
+  border-radius: 5px;
+  border: none;
+  caret-color: #feba02;
+}
+.loginEyeicon {
+  color: black;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 12px;
+  cursor: pointer;
+}
+.loginForm {
+  width: 25%;
+  border: 5px solid gray;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 20px;
+  padding: 30px;
+  background: #003580;
+  color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.loginForm > input {
+  width: 100%;
+  height: 37px;
+  border-radius: 5px;
+  border: none;
+  caret-color: #feba02;
+}
+.loginForm > h1 {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.loginForm > div {
+  font-size: 12px;
+  margin: 0;
+  margin-top: -10px;
+  text-align: right;
+  justify-content: space-between;
+}
+.loginForm > button {
+  width: 100%;
+  height: 37px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: #feba02;
+  cursor: pointer;
+}
+.loginForm > input::placeholder {
+  font-size: 15px;
+}
+.lgFsmall {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  font-size: 11px;
+}
+.lgFprgotsmall {
+  text-decoration: underline;
+  font-size: 11px;
+}
+.lds-dual-ring {
+  display: inline-block;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  border-color: #fff transparent #fff transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@media (min-width: 481px) and (max-width: 768px) {
+  .loginForm {
+    width: 35%;
+  }
+}
+@media (min-width: 320px) and (max-width: 480px) {
+  .loginForm {
+    width: 75%;
+  }
+  .loginContainer {
+    padding-top: 100px;
+  }
+  .lgFsmall {
+    font-size: 10px;
+  }
+  .lgFprgotsmall {
+    text-decoration: underline;
+    font-size: 10px;
+  }
+}

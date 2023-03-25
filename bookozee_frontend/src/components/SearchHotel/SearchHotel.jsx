@@ -8,12 +8,6 @@ const SearchHotel = ({ item, bookingDetails, type }) => {
   const endDate =
     type === "booking" && bookingDetails.dates.endDate.split("T")[0];
 
-  const [check, setCheck] = useState(false);
-
-  console.log(startDate === new Date().toISOString().split("T")[0]);
-
-  console.log(startDate, new Date().toISOString().split("T")[0]);
-
   return (
     <div className={type === "booking" ? "searchHotelub" : "searchHotel"}>
       {type === "booking" &&

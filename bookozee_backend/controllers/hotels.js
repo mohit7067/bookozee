@@ -58,6 +58,8 @@ const getAllHotels = async (req, res, next) => {
       }).limit(limit);
       return res.status(200).json(hotels);
     }
+    const hotels = await HotelModel.find({});
+    return res.status(200).json(hotels);
   } catch (error) {
     next(error);
   }
