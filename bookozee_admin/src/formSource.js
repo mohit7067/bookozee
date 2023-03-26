@@ -57,7 +57,7 @@ export const hotelInputs = [
     placeholder: "The best Hotel",
   },
   {
-    id: "desc",
+    id: "description",
     label: "Description",
     type: "text",
     placeholder: "description",
@@ -67,6 +67,12 @@ export const hotelInputs = [
     label: "Price",
     type: "text",
     placeholder: "100",
+  },
+  {
+    id: "rating",
+    label: "Ratings",
+    type: "text",
+    placeholder: "7.8",
   },
 ];
 

@@ -124,7 +124,7 @@ const Hotel = () => {
               <div className="hotelAddress">
                 <MdLocationPin />
                 <span>
-                  {data?.city} {data?.address}
+                  {data?.address},{data?.city}
                 </span>
               </div>
               <span className="hotelDistance">
@@ -158,7 +158,7 @@ const Hotel = () => {
                     an excellent location score of 9.8!
                   </span>
                   <h2>
-                    <b>${days * data?.cheapestPrice * options.room}</b> ({days}{" "}
+                    <b>₹{days * data?.cheapestPrice * options.room}</b> ({days}{" "}
                     nights)
                   </h2>
                   <button onClick={HandleClick}>Reserve or Book Now!</button>

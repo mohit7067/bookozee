@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
+import { MdLocationPin } from "react-icons/md";
 import "./searchhotel.css";
 
 const SearchHotel = ({ item, bookingDetails, type }) => {
@@ -18,7 +18,10 @@ const SearchHotel = ({ item, bookingDetails, type }) => {
         )}
       <div className="shContainer">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDdFGmysLvAeuDkI1OVL703pIHV-xKzlhBCg&usqp=CAU"
+          src={
+            item.photos[0] ||
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDdFGmysLvAeuDkI1OVL703pIHV-xKzlhBCg&usqp=CAU"
+          }
           alt=""
           className="shImg"
         />
@@ -26,11 +29,10 @@ const SearchHotel = ({ item, bookingDetails, type }) => {
       <div className="shDesc">
         <h1 className="shTitle">{item.name}</h1>
         <span className="shCity">
-          {item.city}, {item.address}
+          <MdLocationPin />
+          {item.address}, {item.city}
         </span>
-        <span className="shDistance">{item.distance}m from center</span>
-        <span className="shTaxiOp">Free airport taxi</span>
-        <span className="shSubtitle">Studio with Air conditioning</span>
+
         <span className="shFeatures">{item.description}</span>
         <span className="shCancelOp">Free cancellation</span>
         <span className="shCancelOpSubtitle">
@@ -63,7 +65,7 @@ const SearchHotel = ({ item, bookingDetails, type }) => {
           </div>
         )}
         <div className="shDetailsTexts">
-          <span className="shPrice">${item.cheapestPrice}</span>
+          <span className="shPrice">₹{item.cheapestPrice}</span>
           <span className="shTaxOp">Includes taxes and fees</span>
           <Link to={`/hotel/${item._id}`}>
             <button className="shCheckButton">

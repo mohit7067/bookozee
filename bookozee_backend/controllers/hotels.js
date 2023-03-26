@@ -42,26 +42,29 @@ const getSingleHotel = async (req, res, next) => {
   }
 };
 const getAllHotels = async (req, res, next) => {
-  const { min, max, limit, city, featured } = req.query;
-
+  const { min, max, city, featured, ...others } = req.query;
   try {
     if (city) {
       const hotels = await HotelModel.find({
-        city: { $regex: new RegExp(city, "i") },
-        cheapestPrice: { $gte: min || 1, $lte: max || 999 },
-      }).limit(limit);
-      return res.status(200).json(hotels);
+        city: { $regex: city, $options: "i" },
+        cheapestPrice: { $gt: min || 1, $lt: max || 9999999 },
+      }).limit(req.query.limit);
+      res.status(200).json(hotels);
     } else if (featured) {
       const hotels = await HotelModel.find({
         featured: true,
-        cheapestPrice: { $gte: min || 1, $lte: max || 999 },
-      }).limit(limit);
-      return res.status(200).json(hotels);
+        cheapestPrice: { $gt: min || 1, $lt: max || 9999999 },
+      }).limit(req.query.limit);
+      res.status(200).json(hotels);
+    } else {
+      const hotels = await HotelModel.find({
+        ...others,
+        cheapestPrice: { $gt: min || 1, $lt: max || 9999999 },
+      }).limit(req.query.limit);
+      res.status(200).json(hotels);
     }
-    const hotels = await HotelModel.find({});
-    return res.status(200).json(hotels);
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 };
 const countByCity = async (req, res, next) => {
