@@ -11,6 +11,8 @@ import { DarkModeContext } from "./context/darkModeContext";
 import CheckAuth from "./components/CheckAuth/CheckAuth";
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel";
+import NewRoom from "./pages/newRoom/NewRoom";
+import SingleHotel from "./pages/SingleHotel/SingleHotel";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -68,7 +70,7 @@ function App() {
                 path=":hotelId"
                 element={
                   <CheckAuth>
-                    <Single />
+                    <SingleHotel />
                   </CheckAuth>
                 }
               />
@@ -102,7 +104,7 @@ function App() {
                 path="new"
                 element={
                   <CheckAuth>
-                    <New inputs={roomInputs} title="Add New Room" />
+                    <NewRoom inputs={roomInputs} title="Add New Room" />
                   </CheckAuth>
                 }
               />

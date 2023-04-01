@@ -2,13 +2,33 @@ import "./newHotel.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { storage } from "../../firebase/firebase";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import axios from "axios";
+import useFetch from "../../hooks/useFetch";
+import * as React from "react";
+
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
 const NewHotel = ({ inputs, title }) => {
   const [img1, setImg1] = useState(null);
   const [img2, setImg2] = useState(null);
@@ -20,6 +40,10 @@ const NewHotel = ({ inputs, title }) => {
   const [hoteldetails, setHotelDetails] = useState({});
   const [uploaded, setUploaded] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [rooms, setRooms] = useState([]);
+
+  const { data, loading, error } = useFetch("/rooms");
+
   const upload = (items) => {
     items.forEach((item) => {
       const fileName = new Date().getTime() + item.label + item.file.name;
@@ -40,8 +64,6 @@ const NewHotel = ({ inputs, title }) => {
             case "running":
               console.log("Upload is running");
               break;
-            case "uploaded":
-              console.log("Upload success");
           }
         },
         (error) => {
@@ -50,6 +72,7 @@ const NewHotel = ({ inputs, title }) => {
         () => {
           getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
             setPhotos((prev) => [...prev, downloadURL]);
+
             setUploaded((prev) => prev + 1);
           });
         }
@@ -69,16 +92,25 @@ const NewHotel = ({ inputs, title }) => {
       { file: img6, label: "img6" },
     ]);
   };
+  const handleSelect = (e) => {
+    const {
+      target: { value },
+    } = e;
+    setRooms(value);
+  };
   const HandleChange = (e) => {
     setHotelDetails((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
   const HandleCreateHotel = async (e) => {
     e.preventDefault();
-    photos.length === 6 &&
-      setHotelDetails((prev) => ({ ...prev, photos: photos }));
 
     try {
-      const res = await axios.post("/hotels", hoteldetails);
+      const newHotel = {
+        ...hoteldetails,
+        rooms,
+        photos,
+      };
+      const res = await axios.post("/hotels", newHotel);
       if (res) {
         document.getElementById("HotelForm").reset();
         setUploaded(0);
@@ -88,12 +120,14 @@ const NewHotel = ({ inputs, title }) => {
         setImg4(null);
         setImg5(null);
         setImg6(null);
+        setPhotos([]);
+        setRooms([]);
       }
     } catch (error) {
       console.log(error);
     }
   };
-
+  console.log(rooms);
   return (
     <div className="new">
       <Sidebar />
@@ -241,7 +275,35 @@ const NewHotel = ({ inputs, title }) => {
                   />
                 </div>
               ))}
-
+              <div className="formInput">
+                <label>Featured</label>
+                <select id="featured" name="featured" onChange={HandleChange}>
+                  <option value={false}>No</option>
+                  <option value={true}>Yes</option>
+                </select>
+              </div>
+              <div className="selectRooms">
+                <FormControl sx={{ m: 1, width: 300 }}>
+                  <InputLabel id="demo-multiple-name-label">Rooms</InputLabel>
+                  <Select
+                    labelId="demo-multiple-name-label"
+                    id="demo-multiple-name"
+                    multiple
+                    value={rooms}
+                    onChange={handleSelect}
+                    input={<OutlinedInput label="Name" />}
+                    MenuProps={MenuProps}
+                  >
+                    {loading
+                      ? "loading.."
+                      : data?.map((room) => (
+                          <MenuItem key={room._id} value={room._id}>
+                            {room.title}
+                          </MenuItem>
+                        ))}
+                  </Select>
+                </FormControl>
+              </div>
               <div style={{ width: "70px", height: "70px" }}>
                 <CircularProgressbar value={progress} text={`${progress}%`} />
               </div>

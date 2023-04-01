@@ -81,7 +81,13 @@ export const roomInputs = [
     id: "title",
     label: "Title",
     type: "text",
-    placeholder: "2 bed room",
+    placeholder: "Premier Deluxe, Guest room, 1 King, City view",
+  },
+  {
+    id: "subTitle",
+    label: "Sub Title",
+    type: "text",
+    placeholder: "1 extra-large double bed ",
   },
   {
     id: "desc",

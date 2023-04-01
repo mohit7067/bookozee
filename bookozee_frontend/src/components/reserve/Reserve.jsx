@@ -17,6 +17,7 @@ const Reserve = ({ setOpenModal, hotelId }) => {
   const alldates = JSON.parse(localStorage.getItem("alldates"));
   const Dates = JSON.parse(localStorage.getItem("Dates"));
 
+  console.log(data);
   const HandlePush = (value, num) => {
     setSelectedRooms([...selectedRooms, value]);
     setRoomNumber([...roomNumber, num]);
@@ -90,68 +91,74 @@ const Reserve = ({ setOpenModal, hotelId }) => {
         </span>
         {loading && <p>loading...</p>}
         {data?.map((item) => {
-          return (
-            <div className="rItem" key={`${item?._id}${Math.random() * 1000}`}>
-              <div className="rItemInfo">
-                <div className="rTitle">{item?.title}</div>
-                <div className="rDesc">{item?.desc}</div>
-                <div className="rMax">
-                  Max People: <b> {item?.maxPeople}</b>
+          if (item !== null) {
+            return (
+              <div
+                className="rItem"
+                key={`${item?._id}${Math.random() * 1000}`}
+              >
+                <div className="rItemInfo">
+                  <div className="rTitle">{item?.title}</div>
+                  <div className="rsubTitle">{item?.subTitle}</div>
+                  <div className="rDesc">{item?.desc}</div>
+                  <div className="rMax">
+                    Max People: <b> {item?.maxPeople}</b>
+                  </div>
+                  <div className="rPrice">
+                    Price: <b>₹{item?.price}</b>{" "}
+                  </div>
                 </div>
-                <div className="rPrice">
-                  Price: <b>₹{item?.price}</b>{" "}
+                <div>
+                  <span
+                    style={{
+                      color: "gray",
+                    }}
+                  >
+                    Choose Room Numbers:
+                  </span>
+                  <div className="rRoomContainer">
+                    {item?.roomNumbers.map((roomNumber) => {
+                      return (
+                        <div className="room" key={roomNumber._id}>
+                          <label
+                            className={
+                              !isAvailable(roomNumber) ? "noAvailable" : ""
+                            }
+                          >
+                            {roomNumber.number}
+                          </label>
+                          {!selectedRooms.includes(roomNumber._id) && (
+                            <HiOutlineCheck
+                              onClick={() =>
+                                HandlePush(roomNumber._id, roomNumber.number)
+                              }
+                              className={
+                                !isAvailable(roomNumber)
+                                  ? "noAvailableChecked"
+                                  : "rSelect"
+                              }
+                            />
+                          )}
+                          {selectedRooms.includes(roomNumber._id) && (
+                            <HiOutlineCheck
+                              onClick={() =>
+                                HandlePull(roomNumber._id, roomNumber.number)
+                              }
+                              className={
+                                !isAvailable(roomNumber)
+                                  ? "noAvailableChecked"
+                                  : "rDrop"
+                              }
+                            />
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
-              <div>
-                <span
-                  style={{
-                    color: "gray",
-                  }}
-                >
-                  Choose Room Numbers:
-                </span>
-                <div className="rRoomContainer">
-                  {item?.roomNumbers.map((roomNumber) => {
-                    return (
-                      <div className="room" key={roomNumber._id}>
-                        <label
-                          className={
-                            !isAvailable(roomNumber) ? "noAvailable" : ""
-                          }
-                        >
-                          {roomNumber.number}
-                        </label>
-                        {!selectedRooms.includes(roomNumber._id) && (
-                          <HiOutlineCheck
-                            onClick={() =>
-                              HandlePush(roomNumber._id, roomNumber.number)
-                            }
-                            className={
-                              !isAvailable(roomNumber)
-                                ? "noAvailableChecked"
-                                : "rSelect"
-                            }
-                          />
-                        )}
-                        {selectedRooms.includes(roomNumber._id) && (
-                          <HiOutlineCheck
-                            onClick={() =>
-                              HandlePull(roomNumber._id, roomNumber.number)
-                            }
-                            className={
-                              !isAvailable(roomNumber)
-                                ? "noAvailableChecked"
-                                : "rDrop"
-                            }
-                          />
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            </div>
-          );
+            );
+          }
         })}
         <button onClick={HandleClick} className="rButton">
           Reserve Now !

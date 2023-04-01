@@ -101,13 +101,17 @@
 }
 .rDesc {
   font-size: 300;
-  font-size: 15px;
+  font-size: 13px;
+  color: grey;
 }
 .rMax {
   font-size: 16px;
   font-weight: 500;
 }
-
+.rsubTitle {
+  font-size: 12px;
+  color: coral;
+}
 .rPrice {
   font-weight: 500;
 }

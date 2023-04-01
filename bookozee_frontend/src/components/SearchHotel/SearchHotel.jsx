@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import { MdLocationPin } from "react-icons/md";
 import "./searchhotel.css";
+import { useState } from "react";
 
 const SearchHotel = ({ item, bookingDetails, type }) => {
+  const [see, setSee] = useState(false);
   const startDate =
     type === "booking" && bookingDetails.dates.startDate.split("T")[0];
   const endDate =
@@ -32,8 +34,12 @@ const SearchHotel = ({ item, bookingDetails, type }) => {
           <MdLocationPin />
           {item.address}, {item.city}
         </span>
-
-        <span className="shFeatures">{item.description}</span>
+        <div className={see ? "shFeaturesSee" : "sehDesciption"}>
+          <span className="shFeatures">{item.description}</span>
+        </div>
+        <span onClick={() => setSee(!see)} className={"see"}>
+          {see ? "see less" : "see more"}
+        </span>
         <span className="shCancelOp">Free cancellation</span>
         <span className="shCancelOpSubtitle">
           You can cancel later, so lock in this great price today !
@@ -60,13 +66,16 @@ const SearchHotel = ({ item, bookingDetails, type }) => {
       <div className="shDetails">
         {item.rating > 0 && (
           <div className="shRatings">
-            <span>{item.rating >= 5 ? "Excellent" : "Good"}</span>
+            <span>{item.rating >= 7.5 ? "Excellent" : "Good"}</span>
             <button>{item.rating}</button>
           </div>
         )}
         <div className="shDetailsTexts">
-          <span className="shPrice">₹{item.cheapestPrice}</span>
-          <span className="shTaxOp">Includes taxes and fees</span>
+          <div className="shPriceDesc">
+            <span className="startingFromsh">Starting from</span>
+            <span className="shPrice"> ₹{item.cheapestPrice}</span>
+          </div>
+          <span className="shTaxOp">(Includes taxes and fees)</span>
           <Link to={`/hotel/${item._id}`}>
             <button className="shCheckButton">
               {type === "booking" ? "Cancel Booking" : "See availability"}

@@ -25,7 +25,7 @@ const Hotel = () => {
   const { user } = useContext(AuthContext);
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
 
-  const photos = [
+  const photosdummy = [
     {
       id: "1",
       src: "https://mcdn.wallpapersafari.com/medium/77/81/BgA9vo.jpg",
@@ -102,7 +102,12 @@ const Hotel = () => {
               />
               <div className="hotelSliderWrapper">
                 <img
-                  src={photos[slideNumber].src}
+                  loading="lazy"
+                  src={
+                    data
+                      ? data.photos[slideNumber]
+                      : photosdummy[slideNumber].src
+                  }
                   alt=""
                   className="hotelSliderImg"
                 />
@@ -135,16 +140,28 @@ const Hotel = () => {
                 a free airport taxi
               </span>
               <div className="hotelImages">
-                {photos.map((photo, i) => (
-                  <div key={photo.id} className="hotelImgWrapper">
-                    <img
-                      onClick={() => HandleOpen(i)}
-                      src={photo.src}
-                      alt=""
-                      className="hotelImg"
-                    />
-                  </div>
-                ))}
+                {data
+                  ? data?.photos?.map((photo, i) => (
+                      <div key={i} className="hotelImgWrapper">
+                        <img
+                          onClick={() => HandleOpen(i)}
+                          loading="lazy"
+                          src={photo}
+                          alt=""
+                          className="hotelImg"
+                        />
+                      </div>
+                    ))
+                  : photosdummy.map((photo, i) => (
+                      <div key={photo.id} className="hotelImgWrapper">
+                        <img
+                          onClick={() => HandleOpen(i)}
+                          src={photo.src}
+                          alt=""
+                          className="hotelImg"
+                        />
+                      </div>
+                    ))}
               </div>
               <div className="hotelDetails">
                 <div className="hotelDetailTexts">

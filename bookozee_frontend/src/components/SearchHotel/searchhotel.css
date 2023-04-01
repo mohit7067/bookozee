@@ -22,7 +22,7 @@
 }
 .shContainer {
   width: 250px;
-  height: 100%;
+  height: 250px;
   display: flex;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
@@ -30,6 +30,13 @@
   display: flex;
   flex-direction: column;
   gap: -20px;
+}
+.see {
+  margin-top: -20px;
+  font-size: 12px;
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .roomNumberContainer {
@@ -89,6 +96,14 @@
 .shSubtitle {
   font-size: 12px;
   font-weight: bold;
+}
+.sehDesciption {
+  height: 50px;
+  overflow: hidden;
+}
+.shFeaturesSee {
+  overflow: visible;
+  margin-bottom: 7px;
 }
 .shFeatures {
   font-size: 12px;
@@ -152,7 +167,16 @@
 }
 
 .shPrice {
-  font-size: 24px;
+  font-size: 23px;
+}
+.shPriceDesc {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: right;
+}
+.startingFromsh {
+  font-size: 12px;
 }
 .shTaxOp {
   font-size: 12px;

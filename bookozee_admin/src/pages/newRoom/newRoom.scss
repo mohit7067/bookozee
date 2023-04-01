@@ -19,7 +19,7 @@
       }
 
       .left {
-        flex: 1;
+        flex: 0;
         text-align: center;
 
         img {
@@ -30,14 +30,13 @@
         }
       }
 
-      .right {
-        flex: 2;
-
+      .Roomright {
         form {
           display: flex;
           flex-wrap: wrap;
-          gap: 30px;
-          justify-content: space-around;
+          gap: 50px;
+          justify-content: space-between;
+          padding: 20px;
 
           .formInput {
             width: 40%;
@@ -57,6 +56,22 @@
               padding: 5px;
               border: none;
               border-bottom: 1px solid gray;
+            }
+            textarea {
+              width: 100%;
+              padding: 5px;
+              border: none;
+              border-bottom: 1px solid gray;
+            }
+            select {
+              width: 100%;
+              padding: 5px;
+              border: none;
+              border-bottom: 1px solid gray;
+              option {
+                display: flex;
+                gap: 50px;
+              }
             }
           }
 

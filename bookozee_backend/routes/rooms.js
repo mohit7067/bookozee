@@ -17,7 +17,7 @@ RoomRouter.post("/:hotelid", verifyAdmin, createRoom);
 RoomRouter.put("/:id", verifyAdmin, updateRoom);
 RoomRouter.put("/availability/:id", updateRoomAvailability);
 //Delete
-RoomRouter.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
+RoomRouter.delete("/:id", verifyAdmin, deleteRoom);
 //Get
 RoomRouter.get("/:id", getSingleRoom);
 //Get All
