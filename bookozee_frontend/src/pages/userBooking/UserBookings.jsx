@@ -6,11 +6,21 @@ import SearchHotel from "../../components/SearchHotel/SearchHotel";
 import { AuthContext } from "../../context/AuthContext";
 import useFetch from "../../hooks/useFetch";
 import "./userbooking.css";
+import axios from "axios";
 
 const UserBookings = () => {
   const { user } = useContext(AuthContext);
-  const { data, loading, error } = useFetch(`/user/booking/${user._id}`);
-
+  const { data, loading, error, reFetch } = useFetch(
+    `/user/booking/${user._id}`
+  );
+  const HandleCancel = async (id) => {
+    try {
+      await axios.delete(`/user/booking/remove/${id}`);
+      reFetch();
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div>
       <Navbar />
@@ -25,6 +35,7 @@ const UserBookings = () => {
                 key={item._id}
                 item={item.hotelBooking}
                 bookingDetails={item}
+                HandleCancel={HandleCancel}
                 type="booking"
               />
             );

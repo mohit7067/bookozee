@@ -26,5 +26,13 @@ const getUserBookings = async (req, res, next) => {
     next(error);
   }
 };
+const deleteUserBookings = async (req, res, next) => {
+  try {
+    await BookingModel.findByIdAndDelete(req.params.id);
+    res.status(200).json("booking deleted ");
+  } catch (error) {
+    next(error);
+  }
+};
 
-module.exports = { createBooking, getUserBookings };
+module.exports = { createBooking, getUserBookings, deleteUserBookings };

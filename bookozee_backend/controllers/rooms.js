@@ -43,6 +43,7 @@ const updateRoomAvailability = async (req, res, next) => {
     next(error);
   }
 };
+
 const deleteRoom = async (req, res, next) => {
   try {
     await RoomModel.findByIdAndDelete(req.params.id);

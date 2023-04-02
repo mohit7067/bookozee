@@ -3,8 +3,9 @@ import { MdLocationPin } from "react-icons/md";
 import "./searchhotel.css";
 import { useState } from "react";
 
-const SearchHotel = ({ item, bookingDetails, type }) => {
+const SearchHotel = ({ item, bookingDetails, type, HandleCancel }) => {
   const [see, setSee] = useState(false);
+
   const startDate =
     type === "booking" && bookingDetails.dates.startDate.split("T")[0];
   const endDate =
@@ -76,11 +77,18 @@ const SearchHotel = ({ item, bookingDetails, type }) => {
             <span className="shPrice"> ₹{item.cheapestPrice}</span>
           </div>
           <span className="shTaxOp">(Includes taxes and fees)</span>
-          <Link to={`/hotel/${item._id}`}>
-            <button className="shCheckButton">
-              {type === "booking" ? "Cancel Booking" : "See availability"}
+          {type === "booking" ? (
+            <button
+              className="shCheckButton"
+              onClick={() => HandleCancel(bookingDetails._id)}
+            >
+              Cancel Booking
             </button>
-          </Link>
+          ) : (
+            <Link to={`/hotel/${item._id}`}>
+              <button className="shCheckButton">See availability</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

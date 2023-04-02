@@ -17,7 +17,6 @@ const Reserve = ({ setOpenModal, hotelId }) => {
   const alldates = JSON.parse(localStorage.getItem("alldates"));
   const Dates = JSON.parse(localStorage.getItem("Dates"));
 
-  console.log(data);
   const HandlePush = (value, num) => {
     setSelectedRooms([...selectedRooms, value]);
     setRoomNumber([...roomNumber, num]);

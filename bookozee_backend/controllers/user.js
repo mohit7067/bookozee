@@ -55,8 +55,26 @@ const getSingleUser = async (req, res, next) => {
 };
 const getAllUsers = async (req, res, next) => {
   try {
-    const users = await UserModel.find({}, { password: 0, isAdmin: 0 });
-    res.status(200).send(users);
+    if (req.query.stats) {
+      const data = await UserModel.aggregate([
+        {
+          $project: {
+            month: { $month: "$createdAt" },
+          },
+        },
+        {
+          $group: {
+            _id: "$month",
+            total: { $sum: 1 },
+          },
+        },
+      ]);
+
+      res.status(200).send(data);
+    } else {
+      const users = await UserModel.find({}, { password: 0, isAdmin: 0 });
+      res.status(200).send(users);
+    }
   } catch (error) {
     next(error);
   }

@@ -4,20 +4,25 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
-
+import useFetch from "../../hooks/useFetch";
+import { Link } from "react-router-dom";
 const Widget = ({ type }) => {
-  let data;
+  let container;
 
   //temporary
   const amount = 100;
   const diff = 20;
 
+  const { data } = useFetch("/users");
+
   switch (type) {
     case "user":
-      data = {
+      container = {
         title: "USERS",
         isMoney: false,
         link: "See all users",
+        to: "/users",
+        count: data.length,
 
         icon: (
           <PersonOutlinedIcon
@@ -31,7 +36,7 @@ const Widget = ({ type }) => {
       };
       break;
     case "order":
-      data = {
+      container = {
         title: "ORDERS",
         isMoney: false,
         link: "View all orders",
@@ -47,7 +52,7 @@ const Widget = ({ type }) => {
       };
       break;
     case "earning":
-      data = {
+      container = {
         title: "EARNINGS",
         isMoney: true,
         link: "View net earnings",
@@ -60,7 +65,7 @@ const Widget = ({ type }) => {
       };
       break;
     case "balance":
-      data = {
+      container = {
         title: "BALANCE",
         isMoney: true,
         link: "See details",
@@ -82,18 +87,28 @@ const Widget = ({ type }) => {
   return (
     <div className="widget">
       <div className="left">
-        <span className="title">{data.title}</span>
+        <span className="title">{container.title}</span>
         <span className="counter">
-          {data.isMoney && "$"} {amount}
+          {container?.isMoney && "₹"}{" "}
+          {container?.count ? container.count : amount}
         </span>
-        <span className="link">{data.link}</span>
+        {container?.to ? (
+          <Link
+            to={container.to}
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            <span className="link">{container.link}</span>
+          </Link>
+        ) : (
+          <span className="link">{container.link}</span>
+        )}
       </div>
       <div className="right">
         <div className="percentage positive">
           <KeyboardArrowUpIcon />
           {diff} %
         </div>
-        {data.icon}
+        {container.icon}
       </div>
     </div>
   );
