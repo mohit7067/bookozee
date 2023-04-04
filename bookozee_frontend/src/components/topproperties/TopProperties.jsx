@@ -11,11 +11,12 @@ import "./TopProperties.css";
 // import required modules
 import { Navigation } from "swiper";
 import useFetch from "../../hooks/useFetch";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function TopProperties() {
   const { data, loading, error } = useFetch("/hotels?featured=true&limit=9");
   const [swiperRef, setSwiperRef] = useState(null);
-
+  const navigate = useNavigate();
   const skeletonSliderArr = new Array(9).fill(1);
   const images = [
     "https://cf.bstatic.com/xdata/images/hotel/square600/286659200.webp?k=9206fc9239b3e4538c22d04b85213d6d5e6257015022de8a37effd956fcde4b6&o=&s=1",
@@ -28,6 +29,11 @@ export default function TopProperties() {
     "https://cf.bstatic.com/xdata/images/hotel/square600/356256733.webp?k=d26e6f029087ccbccf4057b95461d46e7ae18d2aa3dd4247ff6b0a148c10bc33&o=&s=1",
     "https://cf.bstatic.com/xdata/images/hotel/square600/283036728.webp?k=b53dc60651b70813b1a2b12cb3903f54b36f1a04128ab0340ee03b860b0f9c48&o=&s=1",
   ];
+
+  const HandleNavigate = (id) => {
+    navigate(`/hotel/${id}`, { replace: true });
+  };
+
   return (
     <div className="slider">
       <h2>Stay at our top unique properties</h2>
@@ -74,14 +80,22 @@ export default function TopProperties() {
           >
             {data?.map((el, i) => {
               return (
-                <SwiperSlide key={el._id}>
+                <SwiperSlide
+                  key={el._id}
+                  onClick={() => HandleNavigate(el._id)}
+                >
+                  {" "}
                   <div className="tpsliderimgcontainer">
-                    <img className="tpToppropertyimg" src={images[i]} alt="" />
+                    <img
+                      className="tpToppropertyimg"
+                      src={el?.photos[0]}
+                      alt=""
+                    />
                     <h4>{el.name}</h4>
                     <div className="tppricecityCotainer">
                       <p className="tpCity">{el.city}</p>
                       <p className="tpPrice">
-                        Starting from ${el.cheapestPrice}{" "}
+                        Starting from ₹{el.cheapestPrice}{" "}
                       </p>
                     </div>
 

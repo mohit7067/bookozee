@@ -3,13 +3,29 @@ import "./topFeatured.css";
 import { useNavigate } from "react-router-dom";
 const Topfeatured = () => {
   const { data, loading, error } = useFetch(
-    "/hotels/countByCity?cities=pune,mumbai,banglore"
+    "/hotels/countByCity?cities=pune,mumbai,bangalore"
   );
 
   const navigate = useNavigate();
 
   const HandleNavigate = (value) => {
-    navigate("/hotels", { state: { destination: value } });
+    navigate("/hotels", {
+      state: {
+        destination: value,
+        dates: [
+          {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: "selection",
+          },
+        ],
+        options: {
+          adult: 1,
+          children: 0,
+          room: 1,
+        },
+      },
+    });
   };
 
   return (

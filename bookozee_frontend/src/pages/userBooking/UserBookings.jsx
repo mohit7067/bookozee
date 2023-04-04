@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Navbar from "../../components/Navbar/Navbar";
 import SearchHotel from "../../components/SearchHotel/SearchHotel";
@@ -10,6 +10,7 @@ import axios from "axios";
 
 const UserBookings = () => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { data, loading, error, reFetch } = useFetch(
     `/user/booking/${user._id}`
   );
@@ -44,18 +45,22 @@ const UserBookings = () => {
         {loading === false && data.length <= 0 && (
           <div>
             <h1>You don't have any booking yet !</h1>
-            <Link
+            <button
               style={{
                 border: "1px solid #003580",
                 padding: "10px",
                 borderRadius: "8px",
                 color: "#003580",
                 textDecoration: "none",
+                cursor: "pointer",
+                background: "transparent",
               }}
-              to="/hotels"
+              onClick={() => {
+                navigate("/hotels");
+              }}
             >
               Checkout hotels nearby you
-            </Link>
+            </button>
           </div>
         )}
       </div>

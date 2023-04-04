@@ -18,6 +18,7 @@
 }
 .tpsliderimgcontainer {
   width: 300px;
+  cursor: pointer;
 }
 .tpsliderimgcontainer > h4 {
   margin-top: 0px;

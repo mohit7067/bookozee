@@ -72,7 +72,9 @@ const countByCity = async (req, res, next) => {
   try {
     const list = await Promise.all(
       cities.map((city) => {
-        return HotelModel.countDocuments({ city: city });
+        return HotelModel.countDocuments({
+          city: { $regex: city, $options: "i" },
+        });
       })
     );
     res.status(200).send(list);

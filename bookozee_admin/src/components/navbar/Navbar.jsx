@@ -7,16 +7,10 @@ import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNone
 import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
-import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
-import { BiLogOutCircle } from "react-icons/bi";
 const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);
-  const AuthCont = useContext(AuthContext);
 
-  const HandleLogout = () => {
-    AuthCont.dispatch({ type: "LOGOUT" });
-  };
   return (
     <div className="navbar">
       <div className="wrapper">
@@ -55,21 +49,6 @@ const Navbar = () => {
               alt=""
               className="avatar"
             />
-          </div>
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              border: "1px solid grey",
-              padding: "8px",
-              fontWeight: "bold",
-              borderRadius: "5px",
-              cursor: "pointer",
-            }}
-            onClick={HandleLogout}
-          >
-            <BiLogOutCircle />
-            Logout
           </div>
         </div>
       </div>

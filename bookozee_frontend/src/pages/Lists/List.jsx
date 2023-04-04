@@ -12,6 +12,28 @@ import axios from "axios";
 const List = () => {
   const location = useLocation();
   const [destination, setDestination] = useState("");
+  const [opendate, setOpenDate] = useState(false);
+
+  const [dates, setDates] = useState(
+    location.state
+      ? location?.state.dates
+      : [
+          {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: "selection",
+          },
+        ]
+  );
+  const [options, setOptions] = useState(
+    location.state
+      ? location.state.options
+      : {
+          adult: 1,
+          children: 0,
+          room: 1,
+        }
+  );
 
   useEffect(() => {
     const GetLocation = async () => {
@@ -32,28 +54,6 @@ const List = () => {
     };
     GetLocation();
   }, [location.state]);
-
-  const [dates, setDates] = useState(
-    location.state
-      ? location.state.dates
-      : [
-          {
-            startDate: new Date(),
-            endDate: new Date(),
-            key: "selection",
-          },
-        ]
-  );
-  const [opendate, setOpenDate] = useState(false);
-  const [options, setOptions] = useState(
-    location.state
-      ? location.state.options
-      : {
-          adult: 1,
-          children: 0,
-          room: 1,
-        }
-  );
 
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
@@ -84,8 +84,8 @@ const List = () => {
               <label>Check-in-Date to Check-out-Date</label>
               <span onClick={() => setOpenDate(!opendate)}>
                 {" "}
-                {`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(
-                  dates[0].endDate,
+                {`${format(dates[0]?.startDate, "dd/MM/yyyy")} to ${format(
+                  dates[0]?.endDate,
                   "dd/MM/yyyy"
                 )}`}
               </span>
