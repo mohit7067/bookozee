@@ -4,7 +4,6 @@ const {
   deleteUser,
   getSingleUser,
   getAllUsers,
-  getUserStat,
 } = require("../controllers/user");
 const { verifyUser, verifyAdmin } = require("../utils/verifyToken");
 

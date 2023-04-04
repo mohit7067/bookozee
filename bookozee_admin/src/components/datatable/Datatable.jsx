@@ -9,10 +9,24 @@ const Datatable = ({ columns }) => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [list, setList] = useState([]);
+  console.log(path);
   const { data } = useFetch(`/${path}`);
+  console.log(data);
   useEffect(() => {
-    setList(data);
-  }, [data]);
+    if (path === "users") {
+      async function getUsers() {
+        try {
+          const res = await axios.get("/users");
+          setList(res.data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      getUsers();
+    } else {
+      setList(data);
+    }
+  }, [data, path]);
   const handleDelete = async (id) => {
     try {
       await axios.delete(`/${path}/${id}`);

@@ -4,7 +4,8 @@ import App from "./App";
 import axios from "axios";
 import { DarkModeContextProvider } from "./context/darkModeContext";
 import { AuthContextProvider } from "./context/AuthContext";
-axios.defaults.baseURL = "http://localhost:8080/api";
+axios.defaults.baseURL = "https://bookozee-backend.onrender.com/api";
+// axios.defaults.baseURL = "http://localhost:8080/api";
 axios.defaults.withCredentials = true;
 ReactDOM.render(
   <React.StrictMode>
