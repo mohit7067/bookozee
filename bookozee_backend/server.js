@@ -13,7 +13,10 @@ require("dotenv").config();
 app.use(express.json());
 app.use(cookieParser());
 const corsOptions = {
-  origin: ["https://bookozee-admin.onrender.com", "http://localhost:3001"],
+  origin: [
+    "https://bookozee.netlify.app",
+    "https://bookozee-admin.netlify.app",
+  ],
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
