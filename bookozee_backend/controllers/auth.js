@@ -73,7 +73,7 @@ const AdminLogin = async (req, response, next) => {
             .cookie("access_token", token, {
               httpOnly: true,
               secure: true,
-              sameSite: "lax",
+              sameSite: "none",
             })
             .status(200)
             .json(otherDetails);
