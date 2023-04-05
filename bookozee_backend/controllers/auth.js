@@ -39,7 +39,8 @@ const Login = async (req, response, next) => {
         const { password, isAdmin, ...otherDetails } = user._doc;
         response
           .cookie("access_token", token, {
-            httpOnly: Secure,
+            httpOnly: true,
+            domain: ".domain.com",
           })
           .status(200)
           .json(otherDetails);
