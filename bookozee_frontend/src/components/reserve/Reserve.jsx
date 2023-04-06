@@ -1,21 +1,41 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { RxCross2 } from "react-icons/rx";
 import useFetch from "../../hooks/useFetch";
 import "./reserve.css";
 import { HiOutlineCheck } from "react-icons/hi";
+import { toast, ToastContainer } from "react-toastify";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
-import { ToastContainer, toast } from "react-toastify";
-const Reserve = ({ setOpenModal, hotelId }) => {
+import "react-toastify/dist/ReactToastify.css";
+
+const Reserve = ({ setOpenModal, hotelId, HanldeNavigate }) => {
   const { user } = useContext(AuthContext);
   const [showSuccess, setShowSuccess] = useState(false);
+
   const [roomNumber, setRoomNumber] = useState([]);
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const navigate = useNavigate();
   const alldates = JSON.parse(localStorage.getItem("alldates"));
   const Dates = JSON.parse(localStorage.getItem("Dates"));
+  useEffect(() => {
+    if (!alldates && !Dates) {
+      toast.error("Please choose dates before booking !", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setTimeout(() => {
+        HanldeNavigate();
+      }, 3000);
+    }
+  }, [alldates, Dates]);
 
   const HandlePush = (value, num) => {
     setSelectedRooms([...selectedRooms, value]);

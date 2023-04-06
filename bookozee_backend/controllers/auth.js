@@ -40,7 +40,8 @@ const Login = async (req, response, next) => {
         response
           .cookie("access_token", token, {
             httpOnly: true,
-            domain: ".domain.com",
+            secure: true,
+            sameSite: "none",
           })
           .status(200)
           .json(otherDetails);

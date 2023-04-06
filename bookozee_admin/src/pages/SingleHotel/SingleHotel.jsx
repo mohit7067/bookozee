@@ -1,5 +1,5 @@
 import "./SingleHotel.css";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import { MdLocationPin } from "react-icons/md";
 const SingleHotel = () => {
@@ -10,9 +10,6 @@ const SingleHotel = () => {
     <>
       <div className="hotelContainer">
         <div className="hotelWrapper">
-          <Link to={`/hotels/edit/${hotelId}`}>
-            <button className="booknow">Edit</button>
-          </Link>
           <h1 className="hotelTitle">{data?.name}</h1>
           <div className="hotelAddress">
             <MdLocationPin />

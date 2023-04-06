@@ -55,6 +55,26 @@ const Hotel = () => {
   const days = JSON.parse(localStorage.getItem("days"));
   const options = JSON.parse(localStorage.getItem("options"));
 
+  const HanldeNavigate = () => {
+    navigate("/hotels", {
+      state: {
+        destination: data?.city,
+        dates: [
+          {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: "selection",
+          },
+        ],
+        options: {
+          adult: 1,
+          children: 0,
+          room: 1,
+        },
+      },
+    });
+  };
+
   const HandleOpen = (i) => {
     setSlideNumber(i);
     setOpen(true);
@@ -174,10 +194,17 @@ const Hotel = () => {
                     Located in the real heart of {data?.city}, this property has
                     an excellent location score of 9.8!
                   </span>
-                  <h2>
-                    <b>₹{days * data?.cheapestPrice * options.room}</b> ({days}{" "}
-                    nights)
-                  </h2>
+                  {days && options ? (
+                    <h2>
+                      <b>₹{days * data?.cheapestPrice * options.room}</b> (
+                      {days} nights)
+                    </h2>
+                  ) : (
+                    <h2>
+                      <b>₹{data?.cheapestPrice}</b> ({1} nights)
+                    </h2>
+                  )}
+
                   <button onClick={HandleClick}>Reserve or Book Now!</button>
                 </div>
               </div>
@@ -187,7 +214,13 @@ const Hotel = () => {
           </div>
         </div>
       )}
-      {openModal && <Reserve setOpenModal={setOpenModal} hotelId={id} />}
+      {openModal && (
+        <Reserve
+          setOpenModal={setOpenModal}
+          HanldeNavigate={HanldeNavigate}
+          hotelId={id}
+        />
+      )}
     </>
   );
 };

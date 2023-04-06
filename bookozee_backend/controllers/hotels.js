@@ -42,7 +42,7 @@ const getSingleHotel = async (req, res, next) => {
   }
 };
 const getAllHotels = async (req, res, next) => {
-  const { min, max, city, featured, ...others } = req.query;
+  const { min, max, city, featured, admin, ...others } = req.query;
   try {
     if (city) {
       const hotels = await HotelModel.find({
@@ -56,9 +56,8 @@ const getAllHotels = async (req, res, next) => {
         cheapestPrice: { $gt: min || 1, $lt: max || 9999999 },
       }).limit(req.query.limit);
       res.status(200).json(hotels);
-    } else {
+    } else if (admin) {
       const hotels = await HotelModel.find({
-        ...others,
         cheapestPrice: { $gt: min || 1, $lt: max || 9999999 },
       }).limit(req.query.limit);
       res.status(200).json(hotels);

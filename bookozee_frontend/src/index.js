@@ -7,9 +7,9 @@ import { SearchContextProvider } from "./context/SearchContext";
 import { AuthContextProvider } from "./context/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-axios.defaults.baseURL = "https://bookozee-backend.vercel.app/api";
+// axios.defaults.baseURL = "https://bookozee-backend.vercel.app/api";
 
-// axios.defaults.baseURL = "http://localhost:8080/api";
+axios.defaults.baseURL = "http://localhost:8080/api";
 axios.defaults.withCredentials = true;
 root.render(
   <AuthContextProvider>
