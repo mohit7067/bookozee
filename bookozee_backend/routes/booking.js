@@ -4,10 +4,9 @@ const {
   deleteUserBookings,
 } = require("../controllers/booking");
 const express = require("express");
-const { verifyUser } = require("../utils/verifyToken");
 const BookingRouter = express.Router();
 BookingRouter.post("/", createBooking);
-BookingRouter.get("/:id", verifyUser, getUserBookings);
-BookingRouter.delete("/remove/:id", verifyUser, deleteUserBookings);
+BookingRouter.get("/:id", getUserBookings);
+BookingRouter.delete("/remove/:id", deleteUserBookings);
 
 module.exports = { BookingRouter };
