@@ -151,7 +151,7 @@ To install all the dependences of the project, run the following command:
 
 
 ```
-npm install npm install --legacy-peer-deps
+npm install
 ```
  or
                       
