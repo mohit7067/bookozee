@@ -31,9 +31,9 @@
   <p  align="center" > 
   Credentials for Admin Panel
   <br/>
-  Email:badmin70@gmail.com
+  Email: badmin70@gmail.com
   <br/>
-  Password:badmin7067
+  Password: badmin7067
   </p>
    
     
