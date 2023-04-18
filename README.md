@@ -60,15 +60,14 @@ To create a hotel detail, users need to click on the "add new" button on the hot
 To create a room detail, users need to go to the room page and click on the "add new room" button, which will redirect them to an "add room" page. Here, users need to fill in all details related to the room, including room numbers, and select the hotel to attach the room to. After filling in all necessary details, users can click the "create" button to create a room in the database.
 
 ## 🚀 Features
-- Saving the weather data in redux-store and session-storage to reduce the dependency of network requests
-- Search weather details according to the city
-- Detect your current location for displaying weather data
-- Shows a map of that location
-- Sync data to get the latest updated details of the current weather
-- Toast notification for every action
-- Pop up modal to display extra details of seven-day forecast weather
-- Cool zoom-in zoom-out animations 
-- Responsive for every screen size.
+
+-Search for hotels by location or nearby location.
+-Select check-in and check-out dates.
+-Choose the number of rooms and people who will be staying.
+-View the availability of hotels and rooms with all the necessary details, such as price, location, address, and images.
+-Receive an error notification if they try to book a room without selecting check-in and check-out dates.
+-View their bookings and delete them. If the booking is completed, it will show "booking closed."
+-The app is responsive and can adjust to every screen size.
 
 <br/>
 
