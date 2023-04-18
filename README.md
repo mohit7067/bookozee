@@ -85,7 +85,7 @@ To use the app, type a name of the city and click on search/press Enter or else 
 
 ## Getting Started
 
-This project was built using Html5, Css3, Scss, React (17.0.2)&(18.2.0), Node js , Express js, Mongo Db. It is a web application and for running on your local environment you should follow these guidelines.
+This project was built using Html5, Css3, Scss, React (18.2.0), Node js (18.14.2) , Express js (4.18.2), Mongo Db. It is a web application and for running on your local environment you should follow these guidelines.
 
 
 ### Prerequisites
