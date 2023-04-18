@@ -1,5 +1,6 @@
 <h1 align="center">Hotel Reservation App</h1> 
-<img src="https://user-images.githubusercontent.com/97459016/232829908-4e54d223-8393-41c9-9726-453256a900c1.png" alt="demopic" width="100%" />
+<img src="https://user-images.githubusercontent.com/97459016/232831323-8b8eb669-c58a-4952-9045-8ecb66193aec.png" alt="demopic" width="100%" />
+
 
 
 
