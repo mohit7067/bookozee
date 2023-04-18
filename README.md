@@ -106,15 +106,27 @@ The project repository can be found in [GitHub link](https://github.com/m-sehraw
 ```
 Using HTTPS
 
-# git clone  https://github.com/m-sehrawat/Weather-App.git
+# git clone  https://github.com/mohit7067/bookozee.git
 ```
 
 + Open terminal on your workspace with
 
 ```
-cd /home/workspace/Weather-App
+cd /home/workspace/bookozee
+```
++ then to access folders of frontend, admin and backend
+
+```
+cd /home/workspace/bookozee/bookozee_admin       for admin panel
 ```
 
+```
+cd /home/workspace/bookozee/bookozee_frontend       for bookozee app
+```
+
+```
+cd /home/workspace/bookozee/bookozee_backend       for bookozee backend
+```
 
 ## Install
 
@@ -148,7 +160,7 @@ npm install or npm install --legacy-peer-deps
 To run the application, run the following command:
 
 ```
-npm run dev
+npm start
 ```
 
 
