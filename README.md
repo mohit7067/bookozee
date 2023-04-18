@@ -16,8 +16,8 @@
      <img src="https://img.shields.io/badge/Scss-CC6699?style=for-the-badge&logo=sass&logoColor=white" alt="sass"/>  
     <img src="https://img.shields.io/badge/React_(17.0.2)_&_(18.2.0)-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="reactjs" />
     <img src="https://img.shields.io/badge/Material_UI-007FFF?style=for-the-badge&logo=mui&logoColor=white" alt="material-ui"/>
-    <img src="https://img.shields.io/badge/Node_JS-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="nodejs"/>
-  <img src="https://img.shields.io/badge/Express_JS-000000?style=for-the-badge&logo=express&logoColor=white" alt="express"/>
+    <img src="https://img.shields.io/badge/Node_JS_(18.14.2)-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="nodejs"/>
+  <img src="https://img.shields.io/badge/Express_JS_(4.18.2)-000000?style=for-the-badge&logo=express&logoColor=white" alt="express"/>
    <img src="https://img.shields.io/badge/Mongo_db-47A248?style=for-the-badge&logo=mongodb&logoColor=white" alt="mongodb"/>
                                                                 
 </p>
