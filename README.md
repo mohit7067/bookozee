@@ -1,9 +1,8 @@
-<h1 align="center">Hotel Reservation App</h1> 
-<div>
-<img src="https://user-images.githubusercontent.com/97459016/232831323-8b8eb669-c58a-4952-9045-8ecb66193aec.png" alt="demopic" width="100%" />
-<img src="https://user-images.githubusercontent.com/97459016/232832684-799ac449-8c74-40af-a95b-f6f5c8803787.png" alt="demopic />
+<h1 align="center">Hotel Reservation App with Admin Panel</h1> 
 
-</div>    
+<img src="https://user-images.githubusercontent.com/97459016/232831323-8b8eb669-c58a-4952-9045-8ecb66193aec.png" alt="demopic" width="100%" />
+<img src="https://user-images.githubusercontent.com/97459016/232832684-799ac449-8c74-40af-a95b-f6f5c8803787.png" alt="demopic width="100%" />
+   
 
 
 
@@ -13,7 +12,7 @@
 <br />
 <p align="center">
     <img src="https://img.shields.io/badge/React_(17.0.2)-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="reactjs" />
-    <img src="https://img.shields.io/badge/Chakra%20UI-3bc7bd?style=for-the-badge&logo=chakraui&logoColor=white" alt="chakra-ui"/>
+    <img src="https://img.shields.io/badge/Chakra%20UI-3bc7bd?style=for-the-badge&logo=mui&logoColor=white" alt="chakra-ui"/>
     <img src="https://img.shields.io/badge/Rest_API-02303A?style=for-the-badge&logo=react-router&logoColor=white" alt="restAPI"/>
     <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" alt="css3"/>     
 </p>
