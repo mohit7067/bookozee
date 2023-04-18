@@ -141,7 +141,7 @@ To install all the dependences of the project, run the following command:
 
 
 ```
-npm install
+npm install or npm install --legacy-peer-deps
 ```
 
 
@@ -155,7 +155,7 @@ npm run dev
 ### Tools used on this project
 
 - Visual Studio Code
-- Vite Js React Template
+
 
 <br/>
 
@@ -165,10 +165,10 @@ npm run dev
 
 If you want to contact me, you can reach me through below handles.
 
-[![linkedin](https://img.shields.io/badge/Mohit_Sehrawat-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/m-sehrawat/)
-[![Twitter](https://img.shields.io/badge/Mohit_Sehrawat-20232A?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/m-sehrawat/)
+[![linkedin](https://img.shields.io/badge/Mohit_Patil-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohit-profile/)
+[![Twitter](https://img.shields.io/badge/Mohit_Patil-20232A?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/mohit7067/)
 
-© 2022 Mohit Sehrawat
+© 2023 Mohit Patiil
 
 
 
