@@ -1,5 +1,5 @@
 <h1 align="center">Weather App</h1> 
-![Bookozee](https://user-images.githubusercontent.com/97459016/232829908-4e54d223-8393-41c9-9726-453256a900c1.png)
+<img src="https://user-images.githubusercontent.com/97459016/232829908-4e54d223-8393-41c9-9726-453256a900c1.png" alt="demopic"/>
 
 
 
