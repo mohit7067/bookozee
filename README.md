@@ -61,13 +61,13 @@ To create a room detail, users need to go to the room page and click on the "add
 
 ## 🚀 Features
 
--Search for hotels by location or nearby location.
--Select check-in and check-out dates.
--Choose the number of rooms and people who will be staying.
--View the availability of hotels and rooms with all the necessary details, such as price, location, address, and images.
--Receive an error notification if they try to book a room without selecting check-in and check-out dates.
--View their bookings and delete them. If the booking is completed, it will show "booking closed."
--The app is responsive and can adjust to every screen size.
+- Search for hotels by location or nearby location.
+- Select check-in and check-out dates.
+- Choose the number of rooms and people who will be staying.
+- View the availability of hotels and rooms with all the necessary details, such as price, location, address, and images.
+- Receive an error notification if they try to book a room without selecting check-in and check-out dates.
+- View their bookings and delete them. If the booking is completed, it will show "booking closed."
+- The app is responsive and can adjust to every screen size.
 
 <br/>
 
