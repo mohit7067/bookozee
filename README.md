@@ -72,17 +72,12 @@ To use the app, type a name of the city and click on search/press Enter or else 
 
 
 
-![Mobile responsive](https://user-images.githubusercontent.com/91532881/166426445-3aeee29c-bca7-4d95-a082-70269bb192fd.png)
-
-![weatherapp](https://user-images.githubusercontent.com/91532881/166334689-ac7807e2-6d40-4a8f-b232-c53955f6ea03.png)
-
-![weatherapp2](https://user-images.githubusercontent.com/91532881/166334796-48e0faa6-3e3c-46e5-9cd1-857da895379d.png)
 
 <br />
 
 ## Demo
 
-https://user-images.githubusercontent.com/91532881/166426542-b271be2e-e7d9-4b3c-bfe7-5e9e51e26be4.mp4
+
 
 
 <br/>
@@ -90,7 +85,7 @@ https://user-images.githubusercontent.com/91532881/166426542-b271be2e-e7d9-4b3c-
 
 ## Getting Started
 
-This project was built using React v 17.0.2, Redux v 4.1.2, Chakra UI, CSS and Rest API. It is a web application and for running on your local environment you should follow these guidelines.
+This project was built using Html5, Css3, Scss, React (17.0.2)&(18.2.0), Node js , Express js, Mongo Db. It is a web application and for running on your local environment you should follow these guidelines.
 
 
 ### Prerequisites
@@ -100,7 +95,7 @@ This project was built using React v 17.0.2, Redux v 4.1.2, Chakra UI, CSS and R
 ### Setup
 
 
-The project repository can be found in [GitHub link](https://github.com/m-sehrawat/Weather-App) or just clone the project using this command. 
+The project repository can be found in [GitHub link](https://github.com/mohit7067/bookozee) or just clone the project using this command. 
 
 
 ```
@@ -116,16 +111,18 @@ cd /home/workspace/bookozee
 ```
 + then to access folders of frontend, admin and backend
 
+for admin panel
 ```
-cd /home/workspace/bookozee/bookozee_admin       for admin panel
-```
-
-```
-cd /home/workspace/bookozee/bookozee_frontend       for bookozee app
+cd /home/workspace/bookozee/bookozee_admin       
 ```
 
+for bookozee app
 ```
-cd /home/workspace/bookozee/bookozee_backend       for bookozee backend
+cd /home/workspace/bookozee/bookozee_frontend       
+```
+for bookozee backend
+```
+cd /home/workspace/bookozee/bookozee_backend       
 ```
 
 ## Install
@@ -153,9 +150,13 @@ To install all the dependences of the project, run the following command:
 
 
 ```
-npm install or npm install --legacy-peer-deps
+npm install npm install --legacy-peer-deps
 ```
-
+ or
+                      
+ ```
+npm install --legacy-peer-deps
+```                     
 
 To run the application, run the following command:
 
@@ -178,9 +179,9 @@ npm start
 If you want to contact me, you can reach me through below handles.
 
 [![linkedin](https://img.shields.io/badge/Mohit_Patil-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/mohit-profile/)
-[![Twitter](https://img.shields.io/badge/Mohit_Patil-20232A?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/mohit7067/)
+[![Github](https://img.shields.io/badge/Mohit_Patil-20232A?style=for-the-badge&logo=Github&logoColor=white)](https://github.com/mohit7067/)
 
-© 2023 Mohit Patiil
+© 2023 Mohit Patil
 
 
 
